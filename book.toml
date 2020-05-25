@@ -1,6 +1,11 @@
 [book]
-authors = ["Dominic Rutkowski"]
-language = "en"
-multilingual = false
-src = "src"
 title = "FRC 167 Documentation"
+authors = ["Iowa City Robotics", "Dominic Rutkowski"]
+description = "Documentation for Iowa City Robotics (FRC Team 167)"
+src = "src"
+language = "en"
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "coal"
+mathjax-support = true
