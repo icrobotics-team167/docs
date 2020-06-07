@@ -5,7 +5,7 @@
 [How to Use This Book](./how-to-use-this-book.md)
 
 ## Chapter 01 - Java Basics
-- [Java Basics](chapter-01-java-basics/00-chapter-overview.md)
+- [Java Basics](chapter-01-java-basics/00-java-basics.md)
     - [What is Java?](chapter-01-java-basics/01-what-is-java.md)
     - [Hello World](chapter-01-java-basics/02-hello-world.md)
     - [Printing and Commenting](chapter-01-java-basics/03-printing-and-commenting.md)
