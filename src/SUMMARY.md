@@ -1,7 +1,7 @@
 # FRC 167 Documentation
 
 ## Prefix Chapters
-[Introduction](./introduction.md)<br>
+[Introduction](./introduction.md)  
 [How to Use This Book](./how-to-use-this-book.md)
 
 ## Chapter 01 - Java Basics
