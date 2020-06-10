@@ -1,0 +1,7 @@
+/* IMAGE CAPTIONS
+   On the line immediately after an image, use *this is my caption* to write a caption for the image.
+ */
+img + em {
+    display: block;
+    text-align: center;
+}
