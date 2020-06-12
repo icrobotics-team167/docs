@@ -7,6 +7,6 @@ language = "en"
 
 [output.html]
 additional-css = ["theme/style.css"]
-default-theme = "light"
-preferred-dark-theme = "coal"
+default-theme = "rust"
+preferred-dark-theme = "navy"
 mathjax-support = true
