@@ -8,6 +8,7 @@
     - [What is Java?](chapter-01-java-basics/01-lesson-what-is-java.md)
     - [Hello World](chapter-01-java-basics/02-lesson-hello-world.md)
     - [Printing and Commenting](chapter-01-java-basics/03-lesson-printing-and-commenting.md)
+    - [Project: Face Printing](chapter-01-java-basics/04-project-face-printing.md)
     - [Variables](chapter-01-java-basics/05-lesson-variables.md)
     - [Conditionals](chapter-01-java-basics/07-lesson-conditionals.md)
     - [Loops](chapter-01-java-basics/09-lesson-loops.md)
