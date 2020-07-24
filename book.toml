@@ -10,9 +10,11 @@ additional-css = ["theme/style.css"]
 default-theme = "rust"
 preferred-dark-theme = "navy"
 mathjax-support = true
+google-analytics = "UA-139208286-3"
 git-repository-url = "https://github.com/icrobotics-team167/docs"
 git-repository-icon = "fa-github"
 site-url = "/"
+input-404 = "404.md"
 
 [output.html.fold]
 enable = true
