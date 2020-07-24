@@ -16,11 +16,11 @@ FIRST LEGO League (FLL) is a program for kids from preschool to eighth grade. It
 
 ### FIRST Tech Challenge
 
-FIRST Tech Challenge (FTC) is a robotics competition for students from grades 7 to 12. Teams consist of up to 15 students. Originally, the program was designed to offer a cheaper alternative to FRC for schools that wanted a robotics program but couldn't afford FRC. However, it has since established itself as a strong and independent program. FTC students design robots to fit in an 18" x 18" cube and program their robots with block programming or Java. Then, they compete against other teams in a 2v2 format. Teams also work to raise money, do outreach events at local schools, and create an engineering notebook.
+FIRST Tech Challenge (FTC) is a robotics competition for students from grades 7 to 12. Teams consist of up to 15 students. Originally, the program was designed to offer a cheaper alternative to FRC for schools that wanted a robotics program but couldn't afford FRC. However, it has since established itself as a strong and independent program. FTC students design robots to fit in an 18" cube and program their robots with block programming or Java. Then, they compete against other teams in a 2v2 format. Teams also work to raise money, do outreach events at local schools, and create an engineering notebook.
 
 ### FIRST Robotics Competition
 
-FIRST Robotics Competition (FRC) is FIRST's flagship robotics program. It is for students from grades 9 to 12, and adults (e.g. teachers, engineers, etc.) work with students. Team sizes vary—in fact, some teams have nearly 100 students—but most teams have around 30 students. Each team designs and builds a 125 lb robot and programs in Java, C++, or LabVIEW. Then, teams compete in a 3v3 format. FIRST's website reads:
+FIRST Robotics Competition (FRC) is FIRST's flagship robotics program. It is for students from grades 9 to 12, and adults (e.g. teachers, engineers, etc.) work with the students. Team sizes vary—in fact, some teams have nearly 100 students—but most teams have around 30 students. Each team designs and builds a 125 lb robot and programs in Java, C++, or LabVIEW. Then, teams compete in a 3v3 format. FIRST's website reads:
 
 > We call FIRST Robotics Competition the ultimate Sport for the Mind. High-school student participants call it "the hardest fun you’ll ever have." It's as close to real-world engineering as a student can get.
 
@@ -39,7 +39,7 @@ Below is a table comparing the FTC and FRC programs in our school district.
 |Meeting Location|At school|Kirkwood Regional Center|
 |Competition Season|September - February|January - April|
 |Robot Dimensions|18" x 18" x 18"|30" x 30" x 84"|
-|Robot Weight|30 lbs|125 lbs|
+|Robot Weight|30 lbs (roughly)|125 lbs|
 |Programming Language|Java|Java|
 |Field Dimensions|12' x 12'|27' x 54'|
 |Event Locations|School gyms and hotels|Arenas and convention centers|
