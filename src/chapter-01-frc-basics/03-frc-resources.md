@@ -1,6 +1,6 @@
 ## FRC Resources
 
-The FRC community is full of wonderful resources made available for free. These include workshops, forums, tutorials, and more. Many teams create their own resources for everyone to use, and there are also lots of resources maintained by the community collaboratively. Taking advantage of these resources is one of the best ways to improve as a team. Below are some great resources from the community that cover all topics. Resources specific to certain topics such as programming will be included in the relevant chapters.
+The FRC community is full of wonderful resources made available for free. These include workshops, forums, tutorials, and more. Many teams create their own resources for everyone to use, and there are also lots of resources maintained by the community collaboratively. Taking advantage of these resources is one of the best ways to improve as a team. Below are some great resources from the community that cover all sorts of topics. Resources specific to certain topics such as programming will be included in the relevant chapters.
 
 If you don't want to look at all these resources, the most important ones to check out are the official resources, Chief Delphi, and The Blue Alliance.
 
@@ -24,7 +24,7 @@ Chief Delphi (CD) is a forum for all things related to FRC. It is among the most
 The Blue Alliance (TBA) provides detailed statistics about FRC teams and events (including offseason events). It has match schedules, live scoring, award history, robot pictures, and match videos.
 
 - **First Updates Now ([Twitch](https://www.twitch.tv/firstupdatesnow), [YouTube](https://www.youtube.com/c/FirstUpdatesNow))** <br>
-First Updates Now (FUN) produces lots of content about FRC (and FTC). They host lots of workshops, interviews, and giveaways. They also do behind-the-scenes videos of different teams' robots.
+First Updates Now (FUN) produces content about FRC (and FTC). They host lots of workshops, interviews, and giveaways. They also do behind-the-scenes videos of different teams' robots.
 
 - **[The Compass Alliance](https://www.thecompassalliance.org/)** <br>
 The Compass Alliance is a group of experienced teams that provides resources in all subjects for beginner teams. The pathways section of their website in particular has lots of good tutorials.

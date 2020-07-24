@@ -9,8 +9,7 @@
 - [FRC Basics](chapter-01-frc-basics/00-overview-frc-basics.md)
     - [FIRST and FRC](chapter-01-frc-basics/01-first-and-frc.md)
     - [Season Timeline](chapter-01-frc-basics/02-season-timeline.md)
-    - [Team 167](chapter-01-frc-basics/03-team-167.md)
-    - [FRC Resources](chapter-01-frc-basics/04-frc-resources.md)
+    - [FRC Resources](chapter-01-frc-basics/03-frc-resources.md)
 
 ## Chapter 02 - Java Programming
 
