@@ -28,4 +28,4 @@ You should never commit onto `master` directly.
 
 ## How to Contribute
 
-For minor changes (fixing typos, improving code samples, etc.), simply submit a PR and briefly explain your changes. For major changes (rewriting, adding, or deleting sections/chapters), open an issue and explain your changes before submitting a PR. Do not submit a PR for any changes that do not compile.
+For minor changes (fixing typos, improving code samples, etc.), simply submit a PR and briefly explain your changes. For major changes (rewriting, adding, or deleting sections/chapters), open an issue for discussion with others before working on and submitting a PR. Do not submit a PR for any changes that do not compile.

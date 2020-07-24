@@ -1,6 +1,6 @@
 ## Printing and Commenting
 
-To begin, this lesson will take a look at the `Hello world!` program you created in the previous [lesson](02-hello-world.md). We will cover important points about the structure of that program. Then, we will discuss how you can print whatever text you want to the console. Finally, we will talk about commenting your code.
+To begin, this lesson will take a look at the `Hello world!` program you created in the previous [lesson](02-lesson-hello-world.md). We will cover important points about the structure of that program. Then, we will discuss how you can print whatever text you want to the console. Finally, we will talk about commenting your code.
 
 ### Hello World!
 
