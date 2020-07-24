@@ -1,0 +1,287 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>FRC Resources - FRC 167 Documentation</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Documentation for Iowa City Robotics (FRC Team 167)">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+        <link rel="stylesheet" href="../theme/style.css">
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../chapter-01-frc-basics/00-overview-frc-basics.html"><strong aria-hidden="true">1.</strong> FRC Basics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../chapter-01-frc-basics/01-first-and-frc.html"><strong aria-hidden="true">1.1.</strong> FIRST and FRC</a></li><li class="chapter-item "><a href="../chapter-01-frc-basics/02-season-timeline.html"><strong aria-hidden="true">1.2.</strong> Season Timeline</a></li><li class="chapter-item expanded "><a href="../chapter-01-frc-basics/03-frc-resources.html" class="active"><strong aria-hidden="true">1.3.</strong> FRC Resources</a></li></ol></li><li class="chapter-item "><a href="../chapter-02-java-programming/00-overview-java-programming.html"><strong aria-hidden="true">2.</strong> Java Programming</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../chapter-02-java-programming/01-lesson-what-is-java.html"><strong aria-hidden="true">2.1.</strong> What is Java?</a></li><li class="chapter-item "><a href="../chapter-02-java-programming/02-lesson-hello-world.html"><strong aria-hidden="true">2.2.</strong> Hello World</a></li><li class="chapter-item "><a href="../chapter-02-java-programming/03-lesson-printing-and-commenting.html"><strong aria-hidden="true">2.3.</strong> Printing and Commenting</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../chapter-02-java-programming/03-project-face-printing.html"><strong aria-hidden="true">2.3.1.</strong> Project: Face Printing</a></li></ol></li><li class="chapter-item "><a href="../chapter-02-java-programming/04-lesson-variables.html"><strong aria-hidden="true">2.4.</strong> Variables</a></li><li class="chapter-item "><a href="../chapter-02-java-programming/05-lesson-conditionals.html"><strong aria-hidden="true">2.5.</strong> Conditionals</a></li><li class="chapter-item "><a href="../chapter-02-java-programming/06-lesson-loops-and-recursion.html"><strong aria-hidden="true">2.6.</strong> Loops and Recursion</a></li><li class="chapter-item "><a href="../chapter-02-java-programming/07-lesson-object-oriented-basics.html"><strong aria-hidden="true">2.7.</strong> Object-Oriented Basics</a></li><li class="chapter-item "><a href="../chapter-02-java-programming/08-lesson-visibility-and-statics.html"><strong aria-hidden="true">2.8.</strong> Visibility and Statics</a></li><li class="chapter-item "><a href="../chapter-02-java-programming/09-lesson-polymorphism.html"><strong aria-hidden="true">2.9.</strong> Polymorphism</a></li><li class="chapter-item "><a href="../chapter-02-java-programming/10-lesson-arrays-and-collections.html"><strong aria-hidden="true">2.10.</strong> Arrays and Collections</a></li><li class="chapter-item "><a href="../chapter-02-java-programming/11-lesson-miscellaneous.html"><strong aria-hidden="true">2.11.</strong> Miscellaneous</a></li></ol></li><li class="chapter-item "><a href="../contribute.html">Contribute</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">FRC 167 Documentation</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        <a href="https://github.com/icrobotics-team167/docs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2><a class="header" href="#frc-resources" id="frc-resources">FRC Resources</a></h2>
+<p>The FRC community is full of wonderful resources made available for free. These include workshops, forums, tutorials, and more. Many teams create their own resources for everyone to use, and there are also lots of resources maintained by the community collaboratively. Taking advantage of these resources is one of the best ways to improve as a team. Below are some great resources from the community that cover all sorts of topics. Resources specific to certain topics such as programming will be included in the relevant chapters.</p>
+<p>If you don't want to look at all these resources, the most important ones to check out are the official resources, Chief Delphi, and The Blue Alliance.</p>
+<h3><a class="header" href="#official-resources" id="official-resources">Official Resources</a></h3>
+<ul>
+<li>
+<p><strong><a href="https://www.firstinspires.org/robotics/frc/blog/">FRC Blog</a></strong> <br>
+The FRC Blog contains official announcements from FIRST about FRC.</p>
+</li>
+<li>
+<p><strong><a href="https://my.firstinspires.org/Dashboard//">STIMS</a></strong> <br>
+The Student Team Information Member System (STIMS) is the official student dashboard for FRC. To attend an official FRC competition, you must create an account, join a team, and have a parent or guardian complete a consent form.</p>
+</li>
+<li>
+<p><strong><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">Season Materials</a></strong> <br>
+The season materials page has all the official documentation for the current season. This includes the game manual, the rule Q&amp;A system, season logos, and more.</p>
+</li>
+</ul>
+<h3><a class="header" href="#community-resources" id="community-resources">Community Resources</a></h3>
+<ul>
+<li>
+<p><strong><a href="https://www.chiefdelphi.com/">Chief Delphi</a></strong> <br>
+Chief Delphi (CD) is a forum for all things related to FRC. It is among the most useful resources listed here. During the build season, CD is full of ideas, prototypes, code samples, etc. to help with robot design. Throughout the year, it contains interesting discussions about robotics, fundraising, STEM, and more.</p>
+</li>
+<li>
+<p><strong><a href="https://www.thebluealliance.com/">The Blue Alliance</a></strong> <br>
+The Blue Alliance (TBA) provides detailed statistics about FRC teams and events (including offseason events). It has match schedules, live scoring, award history, robot pictures, and match videos.</p>
+</li>
+<li>
+<p><strong>First Updates Now (<a href="https://www.twitch.tv/firstupdatesnow">Twitch</a>, <a href="https://www.youtube.com/c/FirstUpdatesNow">YouTube</a>)</strong> <br>
+First Updates Now (FUN) produces content about FRC (and FTC). They host lots of workshops, interviews, and giveaways. They also do behind-the-scenes videos of different teams' robots.</p>
+</li>
+<li>
+<p><strong><a href="https://www.thecompassalliance.org/">The Compass Alliance</a></strong> <br>
+The Compass Alliance is a group of experienced teams that provides resources in all subjects for beginner teams. The pathways section of their website in particular has lots of good tutorials.</p>
+</li>
+<li>
+<p><strong><a href="https://discord.gg/frc">FRC Discord</a></strong> <br>
+The (unofficial) FRC Discord server is a great way to engage with other people in FRC. Lots of students, alumni, and mentors frequent the server, and there are channels for technical discussions, business discussions, and socializing. The community is quite friendly, and it is a good place to ask questions in a less formal setting than Chief Delphi.</p>
+</li>
+<li>
+<p><strong><a href="https://www.reddit.com/r/FRC/">r/FRC</a></strong> <br>
+The FRC subreddit is mostly just memes, but there is the occasional serious discussion.</p>
+</li>
+</ul>
+<h3><a class="header" href="#team-resources" id="team-resources">Team Resources</a></h3>
+<ul>
+<li>
+<p><strong><a href="https://www.citruscircuits.org/fallworkshops.html">Citrus Circuits (1678)</a></strong> <br>
+The Citrus Circuits are an elite FRC team from Davis, California. Their website contains dozens of helpful workshops on topics like CAD, programming, strategy, scouting, fundraising, and outreach.</p>
+</li>
+<li>
+<p><strong><a href="https://www.team254.com/resources/">The Cheesy Poofs (254)</a></strong> <br>
+The Cheesy Poofs are a hall of fame team from San José, California. They are typically regarded as the best team in the world. Their website has many resources—especially about software and CAD.</p>
+</li>
+<li>
+<p><strong><a href="https://www.simbotics.org/resources/">Simbotics (1114)</a></strong> <br>
+Simbotics is an FRC hall of fame team from Ontario, Canada. Their website has lots of useful resources on a variety of topics.</p>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../chapter-01-frc-basics/02-season-timeline.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../chapter-02-java-programming/00-overview-java-programming.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../chapter-01-frc-basics/02-season-timeline.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../chapter-02-java-programming/00-overview-java-programming.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

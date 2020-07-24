@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="sidebar-visible no-js rust">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -41,7 +41,7 @@
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
             var path_to_root = "../";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "coal" : "light";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -67,7 +67,7 @@
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
             html.classList.remove('no-js')
-            html.classList.remove('light')
+            html.classList.remove('rust')
             html.classList.add(theme);
             html.classList.add('js');
         </script>
@@ -86,7 +86,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="../chapter-01-java-basics/00-java-basics.html"><strong aria-hidden="true">1.</strong> Java Basics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../chapter-01-java-basics/01-what-is-java.html"><strong aria-hidden="true">1.1.</strong> What is Java?</a></li><li class="chapter-item expanded "><a href="../chapter-01-java-basics/02-hello-world.html" class="active"><strong aria-hidden="true">1.2.</strong> Hello World</a></li><li class="chapter-item expanded "><a href="../chapter-01-java-basics/03-printing-and-commenting.html"><strong aria-hidden="true">1.3.</strong> Printing and Commenting</a></li><li class="chapter-item expanded "><a href="../chapter-01-java-basics/04-variables.html"><strong aria-hidden="true">1.4.</strong> Variables</a></li><li class="chapter-item expanded "><a href="../chapter-01-java-basics/05-conditionals.html"><strong aria-hidden="true">1.5.</strong> Conditionals</a></li><li class="chapter-item expanded "><a href="../chapter-01-java-basics/06-loops.html"><strong aria-hidden="true">1.6.</strong> Loops</a></li><li class="chapter-item expanded "><a href="../chapter-01-java-basics/07-object-oriented-basics.html"><strong aria-hidden="true">1.7.</strong> Object-Oriented Basics</a></li><li class="chapter-item expanded "><a href="../chapter-01-java-basics/08-statics-and-singletons.html"><strong aria-hidden="true">1.8.</strong> Statics and Singletons</a></li><li class="chapter-item expanded "><a href="../chapter-01-java-basics/09-polymorphism.html"><strong aria-hidden="true">1.9.</strong> Polymorphism</a></li><li class="chapter-item expanded "><a href="../chapter-01-java-basics/10-arrays-and-collections.html"><strong aria-hidden="true">1.10.</strong> Arrays and Collections</a></li><li class="chapter-item expanded "><a href="../chapter-01-java-basics/11-miscellaneous.html"><strong aria-hidden="true">1.11.</strong> Miscellaneous</a></li></ol></li><li class="chapter-item expanded "><a href="../contributing.html">Contributing</a></li><li class="chapter-item expanded affix "><a href="../credits.html">Credits</a></li></ol>
+                <ol class="chapter"><li class="chapter-item affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item "><a href="../chapter-01-frc-basics/00-overview-frc-basics.html"><strong aria-hidden="true">1.</strong> FRC Basics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../chapter-01-frc-basics/01-first-and-frc.html"><strong aria-hidden="true">1.1.</strong> FIRST and FRC</a></li><li class="chapter-item "><a href="../chapter-01-frc-basics/02-season-timeline.html"><strong aria-hidden="true">1.2.</strong> Season Timeline</a></li><li class="chapter-item "><a href="../chapter-01-frc-basics/03-frc-resources.html"><strong aria-hidden="true">1.3.</strong> FRC Resources</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter-02-java-programming/00-overview-java-programming.html"><strong aria-hidden="true">2.</strong> Java Programming</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../chapter-02-java-programming/01-lesson-what-is-java.html"><strong aria-hidden="true">2.1.</strong> What is Java?</a></li><li class="chapter-item expanded "><a href="../chapter-02-java-programming/02-lesson-hello-world.html" class="active"><strong aria-hidden="true">2.2.</strong> Hello World</a></li><li class="chapter-item "><a href="../chapter-02-java-programming/03-lesson-printing-and-commenting.html"><strong aria-hidden="true">2.3.</strong> Printing and Commenting</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../chapter-02-java-programming/03-project-face-printing.html"><strong aria-hidden="true">2.3.1.</strong> Project: Face Printing</a></li></ol></li><li class="chapter-item "><a href="../chapter-02-java-programming/04-lesson-variables.html"><strong aria-hidden="true">2.4.</strong> Variables</a></li><li class="chapter-item "><a href="../chapter-02-java-programming/05-lesson-conditionals.html"><strong aria-hidden="true">2.5.</strong> Conditionals</a></li><li class="chapter-item "><a href="../chapter-02-java-programming/06-lesson-loops-and-recursion.html"><strong aria-hidden="true">2.6.</strong> Loops and Recursion</a></li><li class="chapter-item "><a href="../chapter-02-java-programming/07-lesson-object-oriented-basics.html"><strong aria-hidden="true">2.7.</strong> Object-Oriented Basics</a></li><li class="chapter-item "><a href="../chapter-02-java-programming/08-lesson-visibility-and-statics.html"><strong aria-hidden="true">2.8.</strong> Visibility and Statics</a></li><li class="chapter-item "><a href="../chapter-02-java-programming/09-lesson-polymorphism.html"><strong aria-hidden="true">2.9.</strong> Polymorphism</a></li><li class="chapter-item "><a href="../chapter-02-java-programming/10-lesson-arrays-and-collections.html"><strong aria-hidden="true">2.10.</strong> Arrays and Collections</a></li><li class="chapter-item "><a href="../chapter-02-java-programming/11-lesson-miscellaneous.html"><strong aria-hidden="true">2.11.</strong> Miscellaneous</a></li></ol></li><li class="chapter-item "><a href="../contribute.html">Contribute</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -105,8 +105,8 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust (default)</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
@@ -123,6 +123,10 @@
                     <div class="right-buttons">
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        <a href="https://github.com/icrobotics-team167/docs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
                         
                     </div>
@@ -155,12 +159,12 @@
                         <h2><a class="header" href="#hello-world" id="hello-world">Hello World</a></h2>
 <p>In this lesson, we will go over how to set up Repl.it and use it to write and execute Java programs.</p>
 <h3><a class="header" href="#why-use-replit" id="why-use-replit">Why use Repl.it?</a></h3>
-<p>Repl.it is an online Java editor (it works with other programming languages too, but we're just using it for Java). As such, it lets you write and run Java programs from any computer. Think of it as Google Docs but for programming in Java. If you read <a href="01-what-is-java.html">What is Java?</a> (which you should have), then you know that to write and run Java code, you need a JDK installed. Repl.it comes with a JDK built-in, so compiling and executing a Java program is as simple as clicking a button. These features are great for learning because they make getting started incredibly simple. This is why we will use Repl.it in these lessons.</p>
+<p>Repl.it is an online Java editor (it works with other programming languages too, but we're just using it for Java). As such, it lets you write and run Java programs from any computer. Think of it as Google Docs but for programming in Java. If you read <a href="01-lesson-what-is-java.html">What is Java?</a> (which you should have), then you know that to write and run Java code, you need a JDK installed. Repl.it comes with a JDK built-in, so compiling and executing a Java program is as simple as clicking a button. These features are great for learning because they make getting started incredibly simple. This is why we will use Repl.it in these lessons.</p>
 <p>However, rarely do professionals use Repl.it for writing their code. There are a few reasons for this. The first is that Repl.it is slow. When learning, it doesn't feel overly slow, but when writing large applications with lots of files, it slows down, and the small delays add up. Another reason that few professionals use Repl.it is it stores your code on the cloud. This poses a potential security issue for people working on private software or dealing with classified information. The final (and most significant) reason that Repl.it doesn't work for professionals is that it doesn't offer enough flexibility. Professionals need to be able to have complete control over the computers they write their code on. Without going into too much detail, certain types of programming are difficult or impossible using Repl.it. For instance, developing robot code for FRC is not really possible using Repl.it (the chapter on FRC programming explains how to set up another editor).</p>
 <h3><a class="header" href="#a-tour-of-replit" id="a-tour-of-replit">A Tour of Repl.it</a></h3>
 <p>To get started, go to <a href="https://repl.it/">repl.it</a> on your computer and click the button in the top right corner to create an account. You can sign in with Google or use your email address.</p>
 <p>Each project on Repl.it is called a repl. You will create a new repl for each of the projects in this chapter. Once your account is created, click the button that says &quot;+ new repl&quot; in the top right corner. You should see a few options for your repl. For the language, pick &quot;Java&quot;. Be careful as there are several other options with Java in the name including &quot;JavaScript&quot;, &quot;Java Swing&quot;, and &quot;Java Processing using Processing.js&quot;. These options are all incorrect. For the project name, pick whatever makes sense to you. It is important to give your projects meaningful names to keep your code organized in case you need to look back at it. I suggest you name this project &quot;HelloWorld&quot;. Assuming you are on the free plan for Repl.it, you must leave your repl accessible to the public, but that won't be a problem.</p>
-<p><img src="../img/chapter-01-java-basics/02-hello-world.png" alt="The user interface of a new Java repl called HelloWorld" title="A new Java repl called HelloWorld" />
+<p><img src="../img/chapter-02-java-programming/02-lesson-hello-world.png" alt="The user interface of a new Java repl called HelloWorld" title="A new Java repl called HelloWorld" />
 <em>A new Java repl called HelloWorld</em></p>
 <p>Once your repl is created, you should see a screen something like this. There are a few important parts of this interface that you should know about.</p>
 <p>At the top is the menu bar. The left of the menu bar lets you navigate back to your profile so you can see all your other repls. The large button in the center labeled &quot;run&quot; compiles and executes your code. Finally, the buttons on the right side of the menu bar let you share your repl with other people or create a new repl.</p>
@@ -181,13 +185,13 @@
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../chapter-01-java-basics/01-what-is-java.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../chapter-02-java-programming/01-lesson-what-is-java.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../chapter-01-java-basics/03-printing-and-commenting.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../chapter-02-java-programming/03-lesson-printing-and-commenting.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -199,13 +203,13 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../chapter-01-java-basics/01-what-is-java.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../chapter-02-java-programming/01-lesson-what-is-java.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="../chapter-01-java-basics/03-printing-and-commenting.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../chapter-02-java-programming/03-lesson-printing-and-commenting.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 

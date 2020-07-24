@@ -1,0 +1,254 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Variables - FRC 167 Documentation</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Documentation for Iowa City Robotics (FRC Team 167)">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+        <link rel="stylesheet" href="../theme/style.css">
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item "><a href="../chapter-01-frc-basics/00-overview-frc-basics.html"><strong aria-hidden="true">1.</strong> FRC Basics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../chapter-01-frc-basics/01-first-and-frc.html"><strong aria-hidden="true">1.1.</strong> FIRST and FRC</a></li><li class="chapter-item "><a href="../chapter-01-frc-basics/02-season-timeline.html"><strong aria-hidden="true">1.2.</strong> Season Timeline</a></li><li class="chapter-item "><a href="../chapter-01-frc-basics/03-frc-resources.html"><strong aria-hidden="true">1.3.</strong> FRC Resources</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter-02-java-programming/00-overview-java-programming.html"><strong aria-hidden="true">2.</strong> Java Programming</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../chapter-02-java-programming/01-lesson-what-is-java.html"><strong aria-hidden="true">2.1.</strong> What is Java?</a></li><li class="chapter-item "><a href="../chapter-02-java-programming/02-lesson-hello-world.html"><strong aria-hidden="true">2.2.</strong> Hello World</a></li><li class="chapter-item "><a href="../chapter-02-java-programming/03-lesson-printing-and-commenting.html"><strong aria-hidden="true">2.3.</strong> Printing and Commenting</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../chapter-02-java-programming/03-project-face-printing.html"><strong aria-hidden="true">2.3.1.</strong> Project: Face Printing</a></li></ol></li><li class="chapter-item expanded "><a href="../chapter-02-java-programming/04-lesson-variables.html" class="active"><strong aria-hidden="true">2.4.</strong> Variables</a></li><li class="chapter-item "><a href="../chapter-02-java-programming/05-lesson-conditionals.html"><strong aria-hidden="true">2.5.</strong> Conditionals</a></li><li class="chapter-item "><a href="../chapter-02-java-programming/06-lesson-loops-and-recursion.html"><strong aria-hidden="true">2.6.</strong> Loops and Recursion</a></li><li class="chapter-item "><a href="../chapter-02-java-programming/07-lesson-object-oriented-basics.html"><strong aria-hidden="true">2.7.</strong> Object-Oriented Basics</a></li><li class="chapter-item "><a href="../chapter-02-java-programming/08-lesson-visibility-and-statics.html"><strong aria-hidden="true">2.8.</strong> Visibility and Statics</a></li><li class="chapter-item "><a href="../chapter-02-java-programming/09-lesson-polymorphism.html"><strong aria-hidden="true">2.9.</strong> Polymorphism</a></li><li class="chapter-item "><a href="../chapter-02-java-programming/10-lesson-arrays-and-collections.html"><strong aria-hidden="true">2.10.</strong> Arrays and Collections</a></li><li class="chapter-item "><a href="../chapter-02-java-programming/11-lesson-miscellaneous.html"><strong aria-hidden="true">2.11.</strong> Miscellaneous</a></li></ol></li><li class="chapter-item "><a href="../contribute.html">Contribute</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">FRC 167 Documentation</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        <a href="https://github.com/icrobotics-team167/docs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2><a class="header" href="#variables" id="variables">Variables</a></h2>
+<p>This lesson will focus on variables. We will begin by looking at what variables are and how to create them. We will then talk about important data types and how to perform arithmetic operations on numerical data types. We will also look at constants and where they should be used.</p>
+<h3><a class="header" href="#variables-and-data-types" id="variables-and-data-types">Variables and Data Types</a></h3>
+<p>Fundamentally, every computer program manipulates some sort of input to produce some sort of output. For instance, a video game takes signals from the keyboard and mouse and uses them to determine movement and other actions to be performed. Likewise, a robot program takes signals from a controller and readings from various sensors. It converts these to many outputs such as motor speeds. To manipulate inputs and determine outputs, programs need to store data.</p>
+<p>In Java, we can store data using variables. Every variable has a type, a name, and a value. To visualize this, imagine a program wanted to store a user's age. The data type of the variable would be an integer (a number without a decimal) because ages are represented as integers. The name of the variable might be something like <code>userAge</code>. The value of the variable would be 42 (or however old the user is).</p>
+<p>As a warning, for the sake of brevity, from here on out, you can assume that all code samples are inside the <code>main</code> method unless otherwise specified. Anyway, you can express the scenario about a user's age in Java with the following code:</p>
+<pre><code class="language-java">int userAge = 42;
+</code></pre>
+<p>Let's consider another scenario: a program wants to store a user's bank account balance in a variable. The variable's data type would be a double (a number with a decimal). The name would be something like <code>balance</code> or <code>accountBalance</code>. Finally, the value would be any amount of money such as $14.99.</p>
+<p>We can express this situation in Java like this:</p>
+<pre><code class="language-java">double accountBalance = 1.67;
+</code></pre>
+<p>In general, to create a variable in Java, you write:</p>
+<pre><code class="language-java">type name = value;
+</code></pre>
+<p>Before we go into more detail about what we can do with variables, we should discuss variable types and names. The data types in the following table are the most important ones to know. They will appear in almost every program. If you're curious about other Java data types, you can read about them <a href="https://www.tutorialspoint.com/java/java_basic_datatypes">here</a>.</p>
+<table><thead><tr><th align="left">Type</th><th align="left">Definition</th><th align="left">Example Values</th></tr></thead><tbody>
+<tr><td align="left"><code>int</code></td><td align="left">A number without a decimal</td><td align="left"><code>0</code>, <code>42</code>, <code>-3</code></td></tr>
+<tr><td align="left"><code>double</code></td><td align="left">A number with a decimal</td><td align="left"><code>3.14</code>, <code>-2.718</code>, <code>1.0</code></td></tr>
+<tr><td align="left"><code>boolean</code></td><td align="left">True or false</td><td align="left"><code>true</code>, <code>false</code></td></tr>
+<tr><td align="left"><code>char</code></td><td align="left">One character in single quotes</td><td align="left"><code>'a'</code>, <code>'B'</code>, <code>'_'</code>, <code>'7'</code></td></tr>
+<tr><td align="left"><code>String</code></td><td align="left">A sequence of text in double quotes</td><td align="left"><code>&quot;This is a string&quot;</code>, <code>&quot;&quot;</code></td></tr>
+</tbody></table>
+<p>One important thing to take note of is that <code>int</code>, <code>double</code>, <code>boolean</code>, and <code>char</code> all start with a lowercase letter. This is because they are primitive types. In contrast, <code>String</code> starts with an uppercase letter because it is an Object type. We will discuss what that means in a later lesson, but for now, know that a bit of text is a <code>String</code>—not a <code>string</code>.</p>
+<h3><a class="header" href="#reading-and-updating-variables" id="reading-and-updating-variables">Reading and Updating Variables</a></h3>
+<h3><a class="header" href="#arithmetic-operations-and-casting" id="arithmetic-operations-and-casting">Arithmetic Operations and Casting</a></h3>
+<h3><a class="header" href="#constants" id="constants">Constants</a></h3>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../chapter-02-java-programming/03-project-face-printing.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../chapter-02-java-programming/05-lesson-conditionals.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../chapter-02-java-programming/03-project-face-printing.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../chapter-02-java-programming/05-lesson-conditionals.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
