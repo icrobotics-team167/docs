@@ -14,7 +14,7 @@ To get started, go to [repl.it](https://repl.it/) on your computer and click the
 
 Each project on Repl.it is called a repl. You will create a new repl for each of the projects in this chapter. Once your account is created, click the button that says "+ new repl" in the top right corner. You should see a few options for your repl. For the language, pick "Java". Be careful as there are several other options with Java in the name including "JavaScript", "Java Swing", and "Java Processing using Processing.js". These options are all incorrect. For the project name, pick whatever makes sense to you. It is important to give your projects meaningful names to keep your code organized in case you need to look back at it. I suggest you name this project "HelloWorld". Assuming you are on the free plan for Repl.it, you must leave your repl accessible to the public, but that won't be a problem.
 
-![The user interface of a new Java repl called HelloWorld](../img/chapter-02-java-programming/02-lesson-hello-world.png "A new Java repl called HelloWorld")
+![The user interface of a new Java repl called HelloWorld](../img/chapter-07-java-programming/02-lesson-hello-world.png "A new Java repl called HelloWorld")
 *A new Java repl called HelloWorld*
 
 Once your repl is created, you should see a screen something like this. There are a few important parts of this interface that you should know about.
