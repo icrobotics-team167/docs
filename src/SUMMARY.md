@@ -22,6 +22,10 @@
 ## Chapter 04 - Design and CAD
 
 - [Design and CAD](chapter-04-design-and-cad/00-overview-design-and-cad.md)
+    - [Getting Started with Onshape](chapter-04-design-and-cad/01-getting-started-with-onshape.md)
+    - [Onshape Tutorials](chapter-04-design-and-cad/02-onshape-tutorials.md)
+    - [Installing MKCad and FRC FeatureScripts](chapter-04-design-and-cad/03-installing-mkcad-and-frc-featurescripts.md)
+    - [FRC CAD Tutorials](chapter-04-design-and-cad/04-frc-cad-tutorials.md)
 
 ## Chapter 05 - Build
 
