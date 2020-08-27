@@ -13,7 +13,3 @@ mathjax-support = true
 google-analytics = "UA-139208286-3"
 git-repository-url = "https://github.com/icrobotics-team167/docs"
 git-repository-icon = "fa-github"
-
-[output.html.fold]
-enable = true
-level = 0
