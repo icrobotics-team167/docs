@@ -11,7 +11,7 @@ Like most CAD software, Onshape is free for FRC teams, but unlike other CAD syst
 In other CAD software, collaborating with others involves manually making copies of files, keeping track of several different versions, and manually combining the files into the final design. Onshape lets multiple people work on a single document simultaneously. In addition, saving is automatic, and versioning doesn't ever require duplicating files.
 
 - **Support** <br>
-Onshape has terrific community support. Onshape itself has lots of useful [tutorials](02-onshape-tutorials.md) for getting started. Additionally, the FRC community provides well-maintained [parts libraries](03-installing-mkcad-and-frc-featurescripts.md) for COTS (Commercial-Off-The-Shelf) parts and FRC-specific [tutorials](04-frc-cad-tutorials.md).
+Onshape has terrific community support. Onshape itself has lots of useful [tutorials](02-onshape-tutorials.md) for getting started. Additionally, the FRC community provides well-maintained [part libraries](03-frc-setup.md) for COTS (Commercial-Off-The-Shelf) parts and FRC-specific [tutorials](04-frc-cad-tutorials.md).
 
 ### Signing Up
 
@@ -36,3 +36,5 @@ Onshape's rendering process uses a technology called WebGL. You must enable this
 If you are using another browser, or if WebGL remains disabled, follow the instructions [here](https://cad.onshape.com/help/Content/webgl.htm).
 
 If you have both integrated and discrete graphics, then you should make sure Onshape uses discrete graphics. Specific instructions for this depend on your graphics card, but general instructions are available [here](https://cad.onshape.com/help/Content/webgl.htm).
+
+You will find that Onshape is easiest to use with a mouse. A trackpad will work, but if you have access to a mouse, it will make your experience a lot nicer. Even a cheap mouse will do just fine.
