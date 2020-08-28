@@ -36,3 +36,5 @@ Onshape's rendering process uses a technology called WebGL. You must enable this
 If you are using another browser, or if WebGL remains disabled, follow the instructions [here](https://cad.onshape.com/help/Content/webgl.htm).
 
 If you have both integrated and discrete graphics, then you should make sure Onshape uses discrete graphics. Specific instructions for this depend on your graphics card, but general instructions are available [here](https://cad.onshape.com/help/Content/webgl.htm).
+
+You will find that Onshape is easiest to use with a mouse. A trackpad will work, but if you have access to a mouse, it will make your experience a lot nicer. Even a cheap mouse will do just fine.
