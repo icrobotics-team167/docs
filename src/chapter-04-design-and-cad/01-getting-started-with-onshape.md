@@ -11,7 +11,7 @@ Like most CAD software, Onshape is free for FRC teams, but unlike other CAD syst
 In other CAD software, collaborating with others involves manually making copies of files, keeping track of several different versions, and manually combining the files into the final design. Onshape lets multiple people work on a single document simultaneously. In addition, saving is automatic, and versioning doesn't ever require duplicating files.
 
 - **Support** <br>
-Onshape has terrific community support. Onshape itself has lots of useful [tutorials](02-onshape-tutorials.md) for getting started. Additionally, the FRC community provides well-maintained [parts libraries](03-installing-mkcad-and-frc-featurescripts.md) for COTS (Commercial-Off-The-Shelf) parts and FRC-specific [tutorials](04-frc-cad-tutorials.md).
+Onshape has terrific community support. Onshape itself has lots of useful [tutorials](02-onshape-tutorials.md) for getting started. Additionally, the FRC community provides well-maintained [part libraries](03-frc-setup.md) for COTS (Commercial-Off-The-Shelf) parts and FRC-specific [tutorials](04-frc-cad-tutorials.md).
 
 ### Signing Up
 

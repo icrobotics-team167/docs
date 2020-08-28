@@ -55,7 +55,7 @@ This course will discuss Onshape's collaboration features.
 You will learn how to create multiple workspaces, which allows multiple users to edit a document without interfering with each other's work, in this course.
 
 5. **[Linked Documents](https://learn.onshape.com/learn/course/fundamentals-external-references)** <br>
-In this course, you will learn how to use parts from other people's documents (such as parts libraries).
+In this course, you will learn how to use parts from other people's documents (such as part libraries).
 
 6. **[Importing and Exporting Data](https://learn.onshape.com/learn/course/fundamentals-importing-and-exporting-data)** <br>
 This course will explain how to import/export data from/to other CAD systems.
