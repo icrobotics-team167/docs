@@ -242,7 +242,7 @@ Thirdly, the increment and decrement operators (`++` and `--`) provide an even s
 ```java
 int value = 0;
 value++; // 1
-value++; //  2
+value++; // 2
 value--; // 1
 System.out.println(value);
 ```
