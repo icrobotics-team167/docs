@@ -1,4 +1,4 @@
-# Design and CAD
+# CAD
 
 This subchapter will identify lots of useful resources for learning CAD (computer-aided design). Firstly, it will cover using Onshape (our team's CAD system of choice). This includes making parts, versioning documents, and collaborating. Then, it will discuss FRC-specific CAD such as designing a drivetrain or an intake.
 
