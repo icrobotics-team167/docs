@@ -43,6 +43,7 @@
     - [Printing and Commenting](chapter-07-java-programming/03-lesson-printing-and-commenting.md)
         - [Project: Face Printing](chapter-07-java-programming/03-project-face-printing.md)
     - [Variables](chapter-07-java-programming/04-lesson-variables.md)
+        - [Project: Temperature Converter](chapter-07-java-programming/04-project-temperature-converter.md)
     - [Conditionals](chapter-07-java-programming/05-lesson-conditionals.md)
     - [Loops and Recursion](chapter-07-java-programming/06-lesson-loops-and-recursion.md)
     - [Object-Oriented Basics](chapter-07-java-programming/07-lesson-object-oriented-basics.md)
