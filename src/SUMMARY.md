@@ -19,21 +19,22 @@
 
 - [Awards](chapter-03-awards/00-overview-awards.md)
 
-## Chapter 04 - Design and CAD
+## Chapter 04 - Mechanical Design
 
-- [Design and CAD](chapter-04-design-and-cad/00-overview-design-and-cad.md)
-    - [Getting Started with Onshape](chapter-04-design-and-cad/01-getting-started-with-onshape.md)
-    - [Onshape Tutorials](chapter-04-design-and-cad/02-onshape-tutorials.md)
-    - [FRC Setup](chapter-04-design-and-cad/03-frc-setup.md)
-    - [FRC CAD Tutorials](chapter-04-design-and-cad/04-frc-cad-tutorials.md)
+- [Mechanical Design](chapter-04-mechanical-design/00-overview-mechanical-design.md)
+    - [CAD](chapter-04-mechanical-design/01-cad/00-overview-cad.md)
+        - [Getting Started with Onshape](chapter-04-mechanical-design/01-cad/01-getting-started-with-onshape.md)
+        - [Onshape Tutorials](chapter-04-mechanical-design/01-cad/02-onshape-tutorials.md)
+        - [FRC Setup](chapter-04-mechanical-design/01-cad/03-frc-setup.md)
+        - [FRC CAD Tutorials](chapter-04-mechanical-design/01-cad/04-frc-cad-tutorials.md)
 
-## Chapter 05 - Build
+## Chapter 05 - Electrical
 
-- [Build](chapter-05-build/00-overview-build.md)
+- [Electrical](chapter-05-electrical/00-overview-electrical.md)
 
-## Chapter 06 - Electrical
+## Chapter 06 - Safety
 
-- [Electrical](chapter-06-electrical/00-overview-electrical.md)
+- [Safety](chapter-06-safety/00-overview-safety.md)
 
 ## Chapter 07 - Java Programming
 
@@ -43,6 +44,7 @@
     - [Printing and Commenting](chapter-07-java-programming/03-lesson-printing-and-commenting.md)
         - [Project: Face Printing](chapter-07-java-programming/03-project-face-printing.md)
     - [Variables](chapter-07-java-programming/04-lesson-variables.md)
+        - [Project: Temperature Converter](chapter-07-java-programming/04-project-temperature-converter.md)
     - [Conditionals](chapter-07-java-programming/05-lesson-conditionals.md)
     - [Loops and Recursion](chapter-07-java-programming/06-lesson-loops-and-recursion.md)
     - [Object-Oriented Basics](chapter-07-java-programming/07-lesson-object-oriented-basics.md)
