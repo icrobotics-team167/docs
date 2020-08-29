@@ -4,7 +4,7 @@ This section will go over the different parts of a typical FRC season.
 
 ### Preseason
 
-The preseason lasts from September to December. During this time, teams recruit new members, develop technical skills, and raise money to fund the rest of the season. This part of the year normally involves a couple meetings per week, but it is much more relaxed than the build season and the competition season.
+The preseason lasts from September through December. During this time, teams recruit new members, develop technical skills, and raise money to fund the rest of the season. This part of the year normally involves a couple meetings per week, but it is much more relaxed than the build season and the competition season.
 
 ### Build Season
 
@@ -24,8 +24,10 @@ Teams that win certain awards at regional competitions (such as winning the even
 
 Worlds is slightly longer event than a regional competition. We normally travel on Tuesday, practice on Wednesday, and compete on Thursday, Friday, and Saturday.
 
-*Some places have don't have regional competitions. Instead, they have district competitions, which are shorter. Then, teams advance to the district championship based on a complicated point system. The best teams at the district championship advance to worlds. One place that uses this model is Michigan, but since Iowa does not, it is not directly relevant to our team.
+*Some places don't have regional competitions. Instead, they have district competitions, which are shorter. Then, teams advance to the district championship based on a complicated point system. The best teams at the district championship advance to worlds. One place that uses this model is Michigan, but since Iowa does not, it is not directly relevant to our team.
 
 ### Offseason
 
 After the stress of the competition season, the offseason is much more lax. This part of the season takes place from May to August. Our team meets once a week, and we use the time to raise money, organize outreach events in the community, and plan summer camps.
+
+In addition, we sometimes attend offseason competitions. These events are unofficial, and they are shorter and cheaper than regional competitions. They give us a chance to train new drivers and keep people engaged over the summer.

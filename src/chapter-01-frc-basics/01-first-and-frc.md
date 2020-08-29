@@ -10,6 +10,8 @@ FIRST (For the Inspiration and Recognition of Science and Technology) is a globa
 
 In summary, FIRST promotes STEM education by organizing robotics programs for students of all ages. Their three programs are FIRST LEGO League, FIRST Tech Challenge, and FIRST Robotics Competition.
 
+For more information about FIRST, go to [firstinspires.org](https://www.firstinspires.org).
+
 ### FIRST LEGO League
 
 FIRST LEGO League (FLL) is a program for kids from preschool to eighth grade. It is subdivided into three programs: FLL Discover (Pre-K - Grade 1), FLL Explore (Grades 2 - 4), and FLL Challenge (Grades 4 - 8). The first two divisions are simply research and exploration challenges for young students. FLL Challenge is a competition where teams work with LEGO MINDSTORMS kits and block programming to complete various tasks on a tabletop.
@@ -34,7 +36,7 @@ Below is a table comparing the FTC and FRC programs in our school district.
 
 |Criterion|FTC|FRC|
 |:--------:|:-:|:-:|
-|Team(s)|<ul><li style="text-align: left;"><a href="http://rawbacon8743.weebly.com/" target="_blank">Raw Bacon (8743)</a></li><li style="text-align: left;">Lightning Bots (15050)</li><li style="text-align: left;"><a href="https://sites.google.com/view/trobotix/" target="_blank">Trobotix (8696)</a></li></ul>|<a href="https://www.iowacityrobotics.org" target="_blank">Children of the Corn (167)</a>|
+|Team(s)|<ul><li style="text-align: left;">[Raw Bacon (8743)](http://rawbacon8743.weebly.com/)</li><li style="text-align: left;">Lightning Bots (15050)</li><li style="text-align: left;">[Trobotix (8696)](https://sites.google.com/view/trobotix)</li></ul>|[Children of the Corn (167)](https://www.iowacityrobotics.org)|
 |Students Per Team|Up to 15|30+|
 |Meeting Location|At school|Kirkwood Regional Center|
 |Competition Season|September - February|January - April|
