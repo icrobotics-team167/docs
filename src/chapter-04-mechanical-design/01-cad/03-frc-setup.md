@@ -10,7 +10,7 @@ In Onshape, you do not install a part library like MKCad. Instead, you give it a
 
 To insert a part from MKCad, click the "Insert" button in the top left corner inside your assembly. Then, choose the "Other documents" option. Clicking the "MKCad" label will reveal each document in the MKCad library. From there, you can locate and insert whatever you desire as you would any other part.
 
-![A screenshot showing how to insert a part from MKCad into an Onshape assembly](../img/chapter-04-design-and-cad/03-mkcad-demo.png "Instructions for using an MKCad part")
+![A screenshot showing how to insert a part from MKCad into an Onshape assembly](../../img/chapter-04-mechanical-design/03-mkcad-demo.png "Instructions for using an MKCad part")
 *Instructions for using an MKCad part*
 
 ### Installing FRC FeatureScripts
