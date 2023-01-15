@@ -25,6 +25,10 @@ Java has a variety of built-in conditional logic, mainly derived from mathematic
 
 Conditional logic can also be methods that return boolean values.
 
+>`<`, `>`, `<=`, `>=`, `==`, and `!=` can only be used on number data types such as ints and doubles. They cannot be used to compare Strings. For comparing Strings, use `.equals()`. See [Object Oriented Basics](https://docs.iowacityrobotics.org/chapter-07-java-programming/07-lesson-object-oriented-basics.html) for more info.
+>
+>Likewise, `||`, `&&`, `^`, and `!` can only be used on boolean values.
+
 ## Conditional statements
 
 Java has a number of conditional statements that will choose between different code based on the input.
