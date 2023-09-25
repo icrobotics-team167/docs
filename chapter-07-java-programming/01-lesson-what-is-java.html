@@ -4,23 +4,15 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>What is Java? - FRC 167 Documentation</title>
-        
-        
 
 
         <!-- Custom HTML head -->
         
-
-
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="Documentation for Iowa City Robotics (FRC Team 167)">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        
-        
         <link rel="shortcut icon" href="../favicon.png">
-        
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
@@ -28,9 +20,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="../fonts/fonts.css">
-        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
@@ -38,24 +28,21 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
         <link rel="stylesheet" href="../theme/style.css">
-        
 
-        
         <!-- MathJax -->
-        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
     <body>
+    <div id="body-container">
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+        <script>
             var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        <script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -71,7 +58,7 @@
         </script>
 
         <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        <script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
@@ -83,12 +70,14 @@
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
+        <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -101,12 +90,33 @@
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
-                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
                         <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
@@ -116,16 +126,14 @@
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
                             <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">FRC 167 Documentation</h1>
@@ -134,18 +142,16 @@
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
                         <a href="https://github.com/icrobotics-team167/docs" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                        
+
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -153,10 +159,9 @@
                         </ul>
                     </div>
                 </div>
-                
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+                <script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
@@ -166,9 +171,9 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h2><a class="header" href="#what-is-java" id="what-is-java">What is Java?</a></h2>
+                        <h2 id="what-is-java"><a class="header" href="#what-is-java">What is Java?</a></h2>
 <p>Before writing any code, it is good to have a general idea of what computer programming is in the first place. This lesson will go over what programming languages do and how they interact with computers. In addition, it will explain what sets Java apart from other languages and why it is useful. Finally, this lesson will discuss how Java is used in the real world and in FRC.</p>
-<h3><a class="header" href="#what-are-programming-languages" id="what-are-programming-languages">What are Programming Languages?</a></h3>
+<h3 id="what-are-programming-languages"><a class="header" href="#what-are-programming-languages">What are Programming Languages?</a></h3>
 <p>Even though modern computers may seem to be incredibly powerful and intelligent machines, they are really quite stupid. Computers take instructions from a computer program and interpret them literally. To illustrate this, think about the following sentence:</p>
 <blockquote>
 <p>I saw a person on a hill with a telescope.</p>
@@ -186,7 +191,7 @@
 <p>A CPU takes takes computer programs in the form of machine code and sends electrical signals to execute the programs. Machine code is written in binary (0s and 1s), so it is totally incomprehensible to humans. As a result, we have developed what are known as higher-level programming languages. The higher-level a programming language is, the easier it is for humans to read and write.</p>
 <p>Systems programming languages like C and C++ tend to be the lowest-level languages that humans work with frequently. They are readable by humans, but they are still fairly complicated. They tend to be used in situations where performance (execution speed) is important such graphic-intensive games or database software.</p>
 <p>Above low-level languages like C and C++ are high-level languages like Java, Python, and Ruby. These languages are easier to read and write than low-level languages, but they are normally slower. In addition, they give the programmer far less direct control over the computer. There are some things that you simply cannot do in a high-level language like Java that you can in C++.</p>
-<h3><a class="header" href="#why-use-java" id="why-use-java">Why use Java?</a></h3>
+<h3 id="why-use-java"><a class="header" href="#why-use-java">Why use Java?</a></h3>
 <p>If C and C++ are readable by humans and faster than Java, why would anyone use Java? There are a couple of reasons why people frequently use high-level languages like Java. Firstly, as mentioned already, even though humans can read and write C and C++, it is easier to read and write Java since Java is higher-level. Besides this, in many cases, the difference in speed between C or C++ and Java is unimportant. The final reason that Java is so popular is its philosophy of &quot;write once, run anywhere&quot;.</p>
 <p>To understand this principle, you first must understand how programs written in low-level languages are executed. To run a C program, one must compile it. A compiler translates code in a language like C to machine code that the CPU can execute directly.</p>
 <p>Now, think about all the different computers you have. If you have a laptop and a smartphone, they almost certainly have different CPUs inside. Your laptop almost certainly has a CPU made by Intel or AMD, and your phone probably has a CPU made by Apple, Qualcomm, or Samsung. Although it may seem like it, none of these CPUs functions in exactly the same way. Different CPUs have different types of machine code because they have different sets of instructions they can execute. Desktop/laptop CPUs normally have large instruction sets (x86) to maximize performance while mobile CPUs often have small instruction sets (ARM) to improve battery life.</p>
@@ -194,7 +199,7 @@
 <p>The Java philosophy of &quot;write once, run anywhere&quot; means that after writing and compiling Java code, the same compiled program can run on any computer. The way Java does this is with an intermediate language called Java bytecode. When you compile a Java program, it gets translated into Java bytecode—not machine code. Then, the Java bytecode can be distributed to any computer with a Java Virtual Machine (JVM) installed. The JVM executes Java bytecode by converting it into machine code for the specific CPU. This means that the only people who have to worry about the differences between different CPUs are the people who create the JVM.</p>
 <p>One limitation you might think of to this process is that to run a Java bytecode program, a computer must have a JVM installed. However, Java is so ubiquitous that most computers have it. Indeed, lots of computers come with it preinstalled.</p>
 <p>There are two main software packages that contain a JVM. The Java Runtime Environment (JRE) is intended for consumers. It contains a JVM and several other libraries required to run Java bytecode. The other package is the Java Development Kit (JDK), which is intended for programmers. The JDK includes the JRE and a compiler to translate Java into Java bytecode.</p>
-<h3><a class="header" href="#java-today" id="java-today">Java Today</a></h3>
+<h3 id="java-today"><a class="header" href="#java-today">Java Today</a></h3>
 <p>Java is not the only language to abide by the &quot;write once, run anywhere&quot; principle. There are other programming languages that are compiled into Java bytecode and executed on the JVM. This includes languages like Scala, Kotlin, and Clojure. Each of these languages is newer than Java and improves on some of its flaws.</p>
 <p>Despite the existence of these newer languages, Java still haas a large presence in technology throughout the world. In fact, according to the TIOBE index (a measure of programming language popularity), Java is the second most-used programming language in the world (as of May 2020). The only language more popular is C. Lots of older code is written in Java and needs to be maintained; it would be too expensive to completely rewrite it in another language. In addition, new applications are written in Java all the time. Fields in which Java is common include web development, Android apps, and business applications.</p>
 <p>For the FIRST Robotics Competition, teams can use Java, C++, or LabVIEW. Our team uses Java for a plethora of reasons. LabVIEW is a graphical programming language developed by National Instruments (the company that makes the roboRIO), and it is meant to be easy for rookie teams to use, but its graphical syntax makes it cumbersome for experienced teams like us. C++ is a very powerful and popular language, but it is needlessly complicated for our team. In addition, its extra speed compared to Java is unnecessary for FRC. Most importantly, the AP Computer Science classes in our school district teach Java, so we have far more people with experience in it than in C++.</p>
@@ -203,17 +208,13 @@
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
                             <a rel="prev" href="../chapter-07-java-programming/00-overview-java-programming.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
 
-                        
                             <a rel="next" href="../chapter-07-java-programming/02-lesson-hello-world.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -221,26 +222,20 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
                     <a rel="prev" href="../chapter-07-java-programming/00-overview-java-programming.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
 
-                
                     <a rel="next" href="../chapter-07-java-programming/02-lesson-hello-world.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
             </nav>
 
         </div>
 
-        
 
-        
         <!-- Google Analytics Tag -->
-        <script type="text/javascript">
+        <script>
             var localAddrs = ["localhost", "127.0.0.1", ""];
 
             // make sure we don't activate google analytics if the developer is
@@ -255,34 +250,25 @@
                 ga('send', 'pageview');
             }
         </script>
-        
 
-        
 
-        
-        <script type="text/javascript">
+        <script>
             window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
-        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
-        
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
 
-        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
-        
-        <script type="text/javascript" src="../theme/main.js"></script>
-        
+        <script src="../theme/main.js"></script>
 
-        
 
+    </div>
     </body>
 </html>

@@ -4,23 +4,15 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>FIRST and FRC - FRC 167 Documentation</title>
-        
-        
 
 
         <!-- Custom HTML head -->
         
-
-
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="Documentation for Iowa City Robotics (FRC Team 167)">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        
-        
         <link rel="shortcut icon" href="../favicon.png">
-        
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
@@ -28,9 +20,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="../fonts/fonts.css">
-        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
@@ -38,24 +28,21 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
         <link rel="stylesheet" href="../theme/style.css">
-        
 
-        
         <!-- MathJax -->
-        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
     <body>
+    <div id="body-container">
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+        <script>
             var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        <script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -71,7 +58,7 @@
         </script>
 
         <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        <script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
@@ -83,12 +70,14 @@
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
+        <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -101,12 +90,33 @@
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
-                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
                         <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
@@ -116,16 +126,14 @@
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
                             <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">FRC 167 Documentation</h1>
@@ -134,18 +142,16 @@
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
                         <a href="https://github.com/icrobotics-team167/docs" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                        
+
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -153,10 +159,9 @@
                         </ul>
                     </div>
                 </div>
-                
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+                <script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
@@ -166,57 +171,53 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h2><a class="header" href="#first-and-frc" id="first-and-frc">FIRST and FRC</a></h2>
+                        <h2 id="first-and-frc"><a class="header" href="#first-and-frc">FIRST and FRC</a></h2>
 <p>This section will discuss what FRC is and how it fits into FIRST's set of programs and goals.</p>
-<h3><a class="header" href="#first" id="first">FIRST</a></h3>
+<h3 id="first"><a class="header" href="#first">FIRST</a></h3>
 <p>FIRST (For the Inspiration and Recognition of Science and Technology) is a global nonprofit organization headquartered in Manchester, NH. According to its website:</p>
 <blockquote>
 <p>FIRST inspires young people to be science and technology leaders and innovators by engaging them in exciting mentor-based programs that build science, engineering, and technology skills, that inspire innovation, and that foster well-rounded life capabilities including self-confidence, communication, and leadership.</p>
 </blockquote>
 <p>In summary, FIRST promotes STEM education by organizing robotics programs for students of all ages. Their three programs are FIRST LEGO League, FIRST Tech Challenge, and FIRST Robotics Competition.</p>
 <p>For more information about FIRST, go to <a href="https://www.firstinspires.org">firstinspires.org</a>.</p>
-<h3><a class="header" href="#first-lego-league" id="first-lego-league">FIRST LEGO League</a></h3>
+<h3 id="first-lego-league"><a class="header" href="#first-lego-league">FIRST LEGO League</a></h3>
 <p>FIRST LEGO League (FLL) is a program for kids from preschool to eighth grade. It is subdivided into three programs: FLL Discover (Pre-K - Grade 1), FLL Explore (Grades 2 - 4), and FLL Challenge (Grades 4 - 8). The first two divisions are simply research and exploration challenges for young students. FLL Challenge is a competition where teams work with LEGO MINDSTORMS kits and block programming to complete various tasks on a tabletop.</p>
-<h3><a class="header" href="#first-tech-challenge" id="first-tech-challenge">FIRST Tech Challenge</a></h3>
+<h3 id="first-tech-challenge"><a class="header" href="#first-tech-challenge">FIRST Tech Challenge</a></h3>
 <p>FIRST Tech Challenge (FTC) is a robotics competition for students from grades 7 to 12. Teams consist of up to 15 students. Originally, the program was designed to offer a cheaper alternative to FRC for schools that wanted a robotics program but couldn't afford FRC. However, it has since established itself as a strong and independent program. FTC students design robots to fit in an 18&quot; cube and program their robots with block programming or Java. Then, they compete against other teams in a 2v2 format. Teams also work to raise money, do outreach events at local schools, and create an engineering notebook.</p>
-<h3><a class="header" href="#first-robotics-competition" id="first-robotics-competition">FIRST Robotics Competition</a></h3>
+<h3 id="first-robotics-competition"><a class="header" href="#first-robotics-competition">FIRST Robotics Competition</a></h3>
 <p>FIRST Robotics Competition (FRC) is FIRST's flagship robotics program. It is for students from grades 9 to 12, and adults (e.g. teachers, engineers, etc.) work with the students. Team sizes vary—in fact, some teams have nearly 100 students—but most teams have around 30 students. Each team designs and builds a 125 lb robot and programs in Java, C++, or LabVIEW. Then, teams compete in a 3v3 format. FIRST's website reads:</p>
 <blockquote>
 <p>We call FIRST Robotics Competition the ultimate Sport for the Mind. High-school student participants call it &quot;the hardest fun you’ll ever have.&quot; It's as close to real-world engineering as a student can get.</p>
 </blockquote>
 <p>In addition to engineering, FRC teams work year-round to raise funds, do outreach events, and develop a team brand.</p>
-<h3><a class="header" href="#which-program-is-right-for-me" id="which-program-is-right-for-me">Which program is right for me?</a></h3>
+<h3 id="which-program-is-right-for-me"><a class="header" href="#which-program-is-right-for-me">Which program is right for me?</a></h3>
 <p>Since FLL doesn't have any overlap with FRC by age range, we will focus on the differences between FRC and FTC. In general, FRC is like FTC but bigger: FRC robots are heavier and more powerful, FRC teams and events are larger, FRC budgets are more expensive, etc. In our school district, there is one FTC team at each high school and one FRC team shared by all the high schools.</p>
 <p>Below is a table comparing the FTC and FRC programs in our school district.</p>
-<table><thead><tr><th align="center">Criterion</th><th align="center">FTC</th><th align="center">FRC</th></tr></thead><tbody>
-<tr><td align="center">Team(s)</td><td align="center"><ul><li style="text-align: left;"><a href="http://rawbacon8743.weebly.com/">Raw Bacon (8743)</a></li><li style="text-align: left;">Lightning Bots (15050)</li><li style="text-align: left;"><a href="https://sites.google.com/view/trobotix">Trobotix (8696)</a></li></ul></td><td align="center"><a href="https://www.iowacityrobotics.org">Children of the Corn (167)</a></td></tr>
-<tr><td align="center">Students Per Team</td><td align="center">Up to 15</td><td align="center">30+</td></tr>
-<tr><td align="center">Meeting Location</td><td align="center">At school</td><td align="center">Kirkwood Regional Center</td></tr>
-<tr><td align="center">Competition Season</td><td align="center">September - February</td><td align="center">January - April</td></tr>
-<tr><td align="center">Robot Dimensions</td><td align="center">18&quot; x 18&quot; x 18&quot;</td><td align="center">30&quot; x 30&quot; x 84&quot;</td></tr>
-<tr><td align="center">Robot Weight</td><td align="center">30 lbs (roughly)</td><td align="center">125 lbs</td></tr>
-<tr><td align="center">Programming Language</td><td align="center">Java</td><td align="center">Java</td></tr>
-<tr><td align="center">Field Dimensions</td><td align="center">12' x 12'</td><td align="center">27' x 54'</td></tr>
-<tr><td align="center">Event Locations</td><td align="center">School gyms and hotels</td><td align="center">Arenas and convention centers</td></tr>
-<tr><td align="center">Team Budget</td><td align="center">$4,000</td><td align="center">$40,000</td></tr>
-<tr><td align="center">Robot Picture</td><td align="center"><img src="../img/chapter-01-frc-basics/01-ftc-robot.jpg" alt="An FTC robot"></td><td align="center"><img src="../img/chapter-01-frc-basics/01-frc-robot.jpg" alt="An FRC robot"></td></tr>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">Criterion</th><th style="text-align: center">FTC</th><th style="text-align: center">FRC</th></tr></thead><tbody>
+<tr><td style="text-align: center">Team(s)</td><td style="text-align: center"><ul><li style="text-align: left;"><a href="http://rawbacon8743.weebly.com/">Raw Bacon (8743)</a></li><li style="text-align: left;">Lightning Bots (15050)</li><li style="text-align: left;"><a href="https://sites.google.com/view/trobotix">Trobotix (8696)</a></li></ul></td><td style="text-align: center"><a href="https://www.iowacityrobotics.org">Children of the Corn (167)</a></td></tr>
+<tr><td style="text-align: center">Students Per Team</td><td style="text-align: center">Up to 15</td><td style="text-align: center">30+</td></tr>
+<tr><td style="text-align: center">Meeting Location</td><td style="text-align: center">At school</td><td style="text-align: center">Kirkwood Regional Center</td></tr>
+<tr><td style="text-align: center">Competition Season</td><td style="text-align: center">September - February</td><td style="text-align: center">January - April</td></tr>
+<tr><td style="text-align: center">Robot Dimensions</td><td style="text-align: center">18&quot; x 18&quot; x 18&quot;</td><td style="text-align: center">30&quot; x 30&quot; x 84&quot;</td></tr>
+<tr><td style="text-align: center">Robot Weight</td><td style="text-align: center">30 lbs (roughly)</td><td style="text-align: center">125 lbs</td></tr>
+<tr><td style="text-align: center">Programming Language</td><td style="text-align: center">Java</td><td style="text-align: center">Java</td></tr>
+<tr><td style="text-align: center">Field Dimensions</td><td style="text-align: center">12' x 12'</td><td style="text-align: center">27' x 54'</td></tr>
+<tr><td style="text-align: center">Event Locations</td><td style="text-align: center">School gyms and hotels</td><td style="text-align: center">Arenas and convention centers</td></tr>
+<tr><td style="text-align: center">Team Budget</td><td style="text-align: center">$4,000</td><td style="text-align: center">$40,000</td></tr>
+<tr><td style="text-align: center">Robot Picture</td><td style="text-align: center"><img src="../img/chapter-01-frc-basics/01-ftc-robot.jpg" alt="An FTC robot"></td><td style="text-align: center"><img src="../img/chapter-01-frc-basics/01-frc-robot.jpg" alt="An FRC robot"></td></tr>
 </tbody></table>
-
+</div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
                             <a rel="prev" href="../chapter-01-frc-basics/00-overview-frc-basics.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
 
-                        
                             <a rel="next" href="../chapter-01-frc-basics/02-season-timeline.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -224,26 +225,20 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
                     <a rel="prev" href="../chapter-01-frc-basics/00-overview-frc-basics.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
 
-                
                     <a rel="next" href="../chapter-01-frc-basics/02-season-timeline.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
             </nav>
 
         </div>
 
-        
 
-        
         <!-- Google Analytics Tag -->
-        <script type="text/javascript">
+        <script>
             var localAddrs = ["localhost", "127.0.0.1", ""];
 
             // make sure we don't activate google analytics if the developer is
@@ -258,34 +253,25 @@
                 ga('send', 'pageview');
             }
         </script>
-        
 
-        
 
-        
-        <script type="text/javascript">
+        <script>
             window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
-        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
-        
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
 
-        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
-        
-        <script type="text/javascript" src="../theme/main.js"></script>
-        
+        <script src="../theme/main.js"></script>
 
-        
 
+    </div>
     </body>
 </html>

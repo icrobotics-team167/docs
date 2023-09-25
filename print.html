@@ -4,25 +4,16 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>FRC 167 Documentation</title>
-        
         <meta name="robots" content="noindex" />
-        
-        
 
 
         <!-- Custom HTML head -->
         
-
-
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="Documentation for Iowa City Robotics (FRC Team 167)">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        
-        
         <link rel="shortcut icon" href="favicon.png">
-        
         <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
@@ -30,9 +21,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="fonts/fonts.css">
-        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="highlight.css">
@@ -40,24 +29,21 @@
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
         <link rel="stylesheet" href="theme/style.css">
-        
 
-        
         <!-- MathJax -->
-        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
     <body>
+    <div id="body-container">
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+        <script>
             var path_to_root = "";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        <script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -73,7 +59,7 @@
         </script>
 
         <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        <script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
@@ -85,12 +71,14 @@
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
+        <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -103,12 +91,33 @@
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
-                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
                         <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
@@ -118,16 +127,14 @@
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
                             <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">FRC 167 Documentation</h1>
@@ -136,18 +143,16 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
                         <a href="https://github.com/icrobotics-team167/docs" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                        
+
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -155,10 +160,9 @@
                         </ul>
                     </div>
                 </div>
-                
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+                <script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
@@ -168,7 +172,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#frc-167-documentation" id="frc-167-documentation">FRC 167 Documentation</a></h1>
+                        <h1 id="frc-167-documentation"><a class="header" href="#frc-167-documentation">FRC 167 Documentation</a></h1>
 <p>Welcome to the FRC 167 Documentation! In writing these docs, our team has two main motivations:</p>
 <p>With each graduating class, it seems like we lose lots of collective knowledge. This limits the success of the team in the future since members spend time relearning concepts and repeating mistakes of the past. The COVID-19 pandemic has exacerbated this effect by limiting the time veteran members have to train new members and robbing everyone of experience. Preventing this from happening will help our team become more competitive.</p>
 <p>In addition, certain subteams on our team regularly have trouble effectively teaching new team members. For instance, the programming subteam struggles to teach new members how to code when lots of people come in with absolutely zero experience. This causes many new members to quit the team because they struggle to find a role for themselves. Fixing this will promote the long-term health of the team.</p>
@@ -176,64 +180,64 @@
 <p>Since this is primarily intended for internal use by team 167, there might be some sections that do not apply to other teams. Nevertheless, the vast majority of the content should be applicable to most FRC teams. So, if you'd like to use this as a resource for your team, feel free.</p>
 <p>Whenever possible, chapters in these docs are self-contained. For instance, the <a href="chapter-07-java-programming/00-overview-java-programming.html">Java Basics</a> chapter doesn't rely on knowledge from any other chapters. In fact, it could be used by someone learning Java outside of an FRC context. However, a few chapters rely heavily on others. For example, knowledge of Java and the FRC control system is necessary for understanding the chapter on <a href="chapter-08-frc-programming/00-overview-frc-programming.html">FRC Programming</a>. When it is the case that one chapter relies on another, it will be noted in the chapter overview.</p>
 <p>We hope you find this resource useful! If you'd like to contribute, it is open-source. Check out the section on <a href="contribute.html">contributing</a> for more information.</p>
-<h1><a class="header" href="#frc-basics" id="frc-basics">FRC Basics</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="frc-basics"><a class="header" href="#frc-basics">FRC Basics</a></h1>
 <p>This chapter will introduce general FRC topics. For new members on the team, this is a good place to start. The chapter will explain what the team does and define important terms for talking about FRC.</p>
-<h2><a class="header" href="#first-and-frc" id="first-and-frc">FIRST and FRC</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="first-and-frc"><a class="header" href="#first-and-frc">FIRST and FRC</a></h2>
 <p>This section will discuss what FRC is and how it fits into FIRST's set of programs and goals.</p>
-<h3><a class="header" href="#first" id="first">FIRST</a></h3>
+<h3 id="first"><a class="header" href="#first">FIRST</a></h3>
 <p>FIRST (For the Inspiration and Recognition of Science and Technology) is a global nonprofit organization headquartered in Manchester, NH. According to its website:</p>
 <blockquote>
 <p>FIRST inspires young people to be science and technology leaders and innovators by engaging them in exciting mentor-based programs that build science, engineering, and technology skills, that inspire innovation, and that foster well-rounded life capabilities including self-confidence, communication, and leadership.</p>
 </blockquote>
 <p>In summary, FIRST promotes STEM education by organizing robotics programs for students of all ages. Their three programs are FIRST LEGO League, FIRST Tech Challenge, and FIRST Robotics Competition.</p>
 <p>For more information about FIRST, go to <a href="https://www.firstinspires.org">firstinspires.org</a>.</p>
-<h3><a class="header" href="#first-lego-league" id="first-lego-league">FIRST LEGO League</a></h3>
+<h3 id="first-lego-league"><a class="header" href="#first-lego-league">FIRST LEGO League</a></h3>
 <p>FIRST LEGO League (FLL) is a program for kids from preschool to eighth grade. It is subdivided into three programs: FLL Discover (Pre-K - Grade 1), FLL Explore (Grades 2 - 4), and FLL Challenge (Grades 4 - 8). The first two divisions are simply research and exploration challenges for young students. FLL Challenge is a competition where teams work with LEGO MINDSTORMS kits and block programming to complete various tasks on a tabletop.</p>
-<h3><a class="header" href="#first-tech-challenge" id="first-tech-challenge">FIRST Tech Challenge</a></h3>
+<h3 id="first-tech-challenge"><a class="header" href="#first-tech-challenge">FIRST Tech Challenge</a></h3>
 <p>FIRST Tech Challenge (FTC) is a robotics competition for students from grades 7 to 12. Teams consist of up to 15 students. Originally, the program was designed to offer a cheaper alternative to FRC for schools that wanted a robotics program but couldn't afford FRC. However, it has since established itself as a strong and independent program. FTC students design robots to fit in an 18&quot; cube and program their robots with block programming or Java. Then, they compete against other teams in a 2v2 format. Teams also work to raise money, do outreach events at local schools, and create an engineering notebook.</p>
-<h3><a class="header" href="#first-robotics-competition" id="first-robotics-competition">FIRST Robotics Competition</a></h3>
+<h3 id="first-robotics-competition"><a class="header" href="#first-robotics-competition">FIRST Robotics Competition</a></h3>
 <p>FIRST Robotics Competition (FRC) is FIRST's flagship robotics program. It is for students from grades 9 to 12, and adults (e.g. teachers, engineers, etc.) work with the students. Team sizes vary—in fact, some teams have nearly 100 students—but most teams have around 30 students. Each team designs and builds a 125 lb robot and programs in Java, C++, or LabVIEW. Then, teams compete in a 3v3 format. FIRST's website reads:</p>
 <blockquote>
 <p>We call FIRST Robotics Competition the ultimate Sport for the Mind. High-school student participants call it &quot;the hardest fun you’ll ever have.&quot; It's as close to real-world engineering as a student can get.</p>
 </blockquote>
 <p>In addition to engineering, FRC teams work year-round to raise funds, do outreach events, and develop a team brand.</p>
-<h3><a class="header" href="#which-program-is-right-for-me" id="which-program-is-right-for-me">Which program is right for me?</a></h3>
+<h3 id="which-program-is-right-for-me"><a class="header" href="#which-program-is-right-for-me">Which program is right for me?</a></h3>
 <p>Since FLL doesn't have any overlap with FRC by age range, we will focus on the differences between FRC and FTC. In general, FRC is like FTC but bigger: FRC robots are heavier and more powerful, FRC teams and events are larger, FRC budgets are more expensive, etc. In our school district, there is one FTC team at each high school and one FRC team shared by all the high schools.</p>
 <p>Below is a table comparing the FTC and FRC programs in our school district.</p>
-<table><thead><tr><th align="center">Criterion</th><th align="center">FTC</th><th align="center">FRC</th></tr></thead><tbody>
-<tr><td align="center">Team(s)</td><td align="center"><ul><li style="text-align: left;"><a href="http://rawbacon8743.weebly.com/">Raw Bacon (8743)</a></li><li style="text-align: left;">Lightning Bots (15050)</li><li style="text-align: left;"><a href="https://sites.google.com/view/trobotix">Trobotix (8696)</a></li></ul></td><td align="center"><a href="https://www.iowacityrobotics.org">Children of the Corn (167)</a></td></tr>
-<tr><td align="center">Students Per Team</td><td align="center">Up to 15</td><td align="center">30+</td></tr>
-<tr><td align="center">Meeting Location</td><td align="center">At school</td><td align="center">Kirkwood Regional Center</td></tr>
-<tr><td align="center">Competition Season</td><td align="center">September - February</td><td align="center">January - April</td></tr>
-<tr><td align="center">Robot Dimensions</td><td align="center">18&quot; x 18&quot; x 18&quot;</td><td align="center">30&quot; x 30&quot; x 84&quot;</td></tr>
-<tr><td align="center">Robot Weight</td><td align="center">30 lbs (roughly)</td><td align="center">125 lbs</td></tr>
-<tr><td align="center">Programming Language</td><td align="center">Java</td><td align="center">Java</td></tr>
-<tr><td align="center">Field Dimensions</td><td align="center">12' x 12'</td><td align="center">27' x 54'</td></tr>
-<tr><td align="center">Event Locations</td><td align="center">School gyms and hotels</td><td align="center">Arenas and convention centers</td></tr>
-<tr><td align="center">Team Budget</td><td align="center">$4,000</td><td align="center">$40,000</td></tr>
-<tr><td align="center">Robot Picture</td><td align="center"><img src="chapter-01-frc-basics/../img/chapter-01-frc-basics/01-ftc-robot.jpg" alt="An FTC robot"></td><td align="center"><img src="chapter-01-frc-basics/../img/chapter-01-frc-basics/01-frc-robot.jpg" alt="An FRC robot"></td></tr>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">Criterion</th><th style="text-align: center">FTC</th><th style="text-align: center">FRC</th></tr></thead><tbody>
+<tr><td style="text-align: center">Team(s)</td><td style="text-align: center"><ul><li style="text-align: left;"><a href="http://rawbacon8743.weebly.com/">Raw Bacon (8743)</a></li><li style="text-align: left;">Lightning Bots (15050)</li><li style="text-align: left;"><a href="https://sites.google.com/view/trobotix">Trobotix (8696)</a></li></ul></td><td style="text-align: center"><a href="https://www.iowacityrobotics.org">Children of the Corn (167)</a></td></tr>
+<tr><td style="text-align: center">Students Per Team</td><td style="text-align: center">Up to 15</td><td style="text-align: center">30+</td></tr>
+<tr><td style="text-align: center">Meeting Location</td><td style="text-align: center">At school</td><td style="text-align: center">Kirkwood Regional Center</td></tr>
+<tr><td style="text-align: center">Competition Season</td><td style="text-align: center">September - February</td><td style="text-align: center">January - April</td></tr>
+<tr><td style="text-align: center">Robot Dimensions</td><td style="text-align: center">18&quot; x 18&quot; x 18&quot;</td><td style="text-align: center">30&quot; x 30&quot; x 84&quot;</td></tr>
+<tr><td style="text-align: center">Robot Weight</td><td style="text-align: center">30 lbs (roughly)</td><td style="text-align: center">125 lbs</td></tr>
+<tr><td style="text-align: center">Programming Language</td><td style="text-align: center">Java</td><td style="text-align: center">Java</td></tr>
+<tr><td style="text-align: center">Field Dimensions</td><td style="text-align: center">12' x 12'</td><td style="text-align: center">27' x 54'</td></tr>
+<tr><td style="text-align: center">Event Locations</td><td style="text-align: center">School gyms and hotels</td><td style="text-align: center">Arenas and convention centers</td></tr>
+<tr><td style="text-align: center">Team Budget</td><td style="text-align: center">$4,000</td><td style="text-align: center">$40,000</td></tr>
+<tr><td style="text-align: center">Robot Picture</td><td style="text-align: center"><img src="chapter-01-frc-basics/../img/chapter-01-frc-basics/01-ftc-robot.jpg" alt="An FTC robot"></td><td style="text-align: center"><img src="chapter-01-frc-basics/../img/chapter-01-frc-basics/01-frc-robot.jpg" alt="An FRC robot"></td></tr>
 </tbody></table>
-<h2><a class="header" href="#season-timeline" id="season-timeline">Season Timeline</a></h2>
+</div><div style="break-before: page; page-break-before: always;"></div><h2 id="season-timeline"><a class="header" href="#season-timeline">Season Timeline</a></h2>
 <p>This section will go over the different parts of a typical FRC season.</p>
-<h3><a class="header" href="#preseason" id="preseason">Preseason</a></h3>
+<h3 id="preseason"><a class="header" href="#preseason">Preseason</a></h3>
 <p>The preseason lasts from September through December. During this time, teams recruit new members, develop technical skills, and raise money to fund the rest of the season. This part of the year normally involves a couple meetings per week, but it is much more relaxed than the build season and the competition season.</p>
-<h3><a class="header" href="#build-season" id="build-season">Build Season</a></h3>
+<h3 id="build-season"><a class="header" href="#build-season">Build Season</a></h3>
 <p>The build season runs from January through April. This is the time of year when teams actually work on a robot for competition.</p>
 <p>The build season begins with kickoff on a Saturday in early January. At kickoff, FIRST livestreams the year's game animation, which gives a brief overview of the challenge for robots that year. FIRST also releases the game manual, which is a long document (normally around 135 pages) that explains the game in great detail. As an example, <a href="https://youtu.be/gmiYWTmFRVE">here</a> is the 2020 game animation, and <a href="https://firstfrc.blob.core.windows.net/frc2020/Manual/2020FRCGameSeasonManual.pdf">here</a> is the 2020 game manual.</p>
 <p>Immediately after kickoff, teams work to prioritize what challenges in the game they want to address. Then, they begin designing, prototyping, building, wiring, programming, and testing. This part of the season requires a large time commitment. Our team often meets five days each week at the beginning of the build season. By the end, we sometimes have to meet every day to get ready for competitions in time.</p>
-<h3><a class="header" href="#competition-season" id="competition-season">Competition Season</a></h3>
+<h3 id="competition-season"><a class="header" href="#competition-season">Competition Season</a></h3>
 <p>The competition season goes from early March to late April. This overlaps with the end of the build season, so after a competition, a team can improve its robot to better prepare for the next competition.</p>
 <p>There are six weeks of official competition prior to the world championship every year. These run from early March to early April. Most years, our team competes in two regional competitions. These competitions normally involve traveling on Wednesday, practicing on Thursday, and competing on Friday and Saturday. We return Saturday or Sunday depending on how long it takes to drive home. Some common destinations for our regional competitions are Cedar Falls, La Crosse, and Duluth.</p>
 <p>Teams that win certain awards at regional competitions (such as winning the event or winning the Chairman's award) qualify for the FIRST Championship. There are actually two championship events that take place in different weeks at the end of April: one in Houston and one in Detroit. The championship a team attends depends on where the regional at which they qualify is located. Our regionals almost always qualify us for the championship in Detroit.</p>
 <p>Worlds is slightly longer event than a regional competition. We normally travel on Tuesday, practice on Wednesday, and compete on Thursday, Friday, and Saturday.</p>
 <p>*Some places don't have regional competitions. Instead, they have district competitions, which are shorter. Then, teams advance to the district championship based on a complicated point system. The best teams at the district championship advance to worlds. One place that uses this model is Michigan, but since Iowa does not, it is not directly relevant to our team.</p>
-<h3><a class="header" href="#offseason" id="offseason">Offseason</a></h3>
+<h3 id="offseason"><a class="header" href="#offseason">Offseason</a></h3>
 <p>After the stress of the competition season, the offseason is much more lax. This part of the season takes place from May to August. Our team meets once a week, and we use the time to raise money, organize outreach events in the community, and plan summer camps.</p>
 <p>In addition, we sometimes attend offseason competitions. These events are unofficial, and they are shorter and cheaper than regional competitions. They give us a chance to train new drivers and keep people engaged over the summer.</p>
-<h2><a class="header" href="#frc-resources" id="frc-resources">FRC Resources</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="frc-resources"><a class="header" href="#frc-resources">FRC Resources</a></h2>
 <p>The FRC community is full of wonderful resources made available for free. These include workshops, forums, tutorials, and more. Many teams create their own resources for everyone to use, and there are also lots of resources maintained by the community collaboratively. Taking advantage of these resources is one of the best ways to improve as a team. Below are some great resources from the community that cover all sorts of topics. Resources specific to certain topics such as programming will be included in the relevant chapters.</p>
 <p>If you don't want to look at all these resources, the most important ones to check out are the official resources, Chief Delphi, and The Blue Alliance.</p>
-<h3><a class="header" href="#official-resources" id="official-resources">Official Resources</a></h3>
+<h3 id="official-resources"><a class="header" href="#official-resources">Official Resources</a></h3>
 <ul>
 <li>
 <p><strong><a href="https://www.firstinspires.org/robotics/frc/blog/">FRC Blog</a></strong> <br>
@@ -248,7 +252,7 @@ The Student Team Information Member System (STIMS) is the official student dashb
 The season materials page has all the official documentation for the current season. This includes the game manual, the rule Q&amp;A system, season logos, and more.</p>
 </li>
 </ul>
-<h3><a class="header" href="#community-resources" id="community-resources">Community Resources</a></h3>
+<h3 id="community-resources"><a class="header" href="#community-resources">Community Resources</a></h3>
 <ul>
 <li>
 <p><strong><a href="https://www.chiefdelphi.com/">Chief Delphi</a></strong> <br>
@@ -275,7 +279,7 @@ The (unofficial) FRC Discord server is a great way to engage with other people i
 The FRC subreddit is mostly just memes, but there is the occasional serious discussion.</p>
 </li>
 </ul>
-<h3><a class="header" href="#team-resources" id="team-resources">Team Resources</a></h3>
+<h3 id="team-resources"><a class="header" href="#team-resources">Team Resources</a></h3>
 <ul>
 <li>
 <p><strong><a href="https://www.citruscircuits.org/fallworkshops.html">Citrus Circuits (1678)</a></strong> <br>
@@ -290,17 +294,17 @@ The Cheesy Poofs are a hall of fame team from San José, California. They are ty
 Simbotics is an FRC hall of fame team from Ontario, Canada. Their website has lots of useful resources on a variety of topics.</p>
 </li>
 </ul>
-<h1><a class="header" href="#business" id="business">Business</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="business"><a class="header" href="#business">Business</a></h1>
 <p>This chapter will go over important business topics such as how to interact with companies, how to raise money, how to do meaningful outreach, how to coordinate Junior Bots summer camps, how to write newsletters, and how to manage team social media accounts.</p>
-<h1><a class="header" href="#awards" id="awards">Awards</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="awards"><a class="header" href="#awards">Awards</a></h1>
 <p>This chapter will discuss the different awards available in FRC. The primary focus of the chapter will be how to put together a winning Chairman's award submission, but there will also be sections about the Dean's List award and the Woodie Flowers award.</p>
-<h1><a class="header" href="#mechanical-design" id="mechanical-design">Mechanical Design</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="mechanical-design"><a class="header" href="#mechanical-design">Mechanical Design</a></h1>
 <p>First, this chapter will go over CAD using Onshape. After that, it will discuss some important design principles. This includes general discussions of different subsystems as well as specific lessons learned from past mistakes.</p>
-<h1><a class="header" href="#cad" id="cad">CAD</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="cad"><a class="header" href="#cad">CAD</a></h1>
 <p>This subchapter will identify lots of useful resources for learning CAD (computer-aided design). Firstly, it will cover using Onshape (our team's CAD system of choice). This includes making parts, versioning documents, and collaborating. Then, it will discuss FRC-specific CAD such as designing a drivetrain or an intake.</p>
 <p>For many of you, this will be your first time working in CAD (at least since eighth grade). Accordingly, the chapter is designed for absolute beginners. If you have significant experience with another CAD system (e.g. Inventor, Fusion 360, SOLIDWORKS, etc.) and/or Git, you will breeze through the Onshape tutorials. If you have prior Onshape experience, you can probably skip straight to the FRC-specific <a href="chapter-04-mechanical-design/01-cad/03-frc-setup.html">sections</a>.</p>
-<h2><a class="header" href="#getting-started-with-onshape" id="getting-started-with-onshape">Getting Started with Onshape</a></h2>
-<h3><a class="header" href="#why-onshape" id="why-onshape">Why Onshape?</a></h3>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="getting-started-with-onshape"><a class="header" href="#getting-started-with-onshape">Getting Started with Onshape</a></h2>
+<h3 id="why-onshape"><a class="header" href="#why-onshape">Why Onshape?</a></h3>
 <p>There are several reasons why our team uses Onshape instead of another CAD system such as Inventor, Fusion 360, or SOLIDWORKS:</p>
 <ul>
 <li>
@@ -316,9 +320,9 @@ In other CAD software, collaborating with others involves manually making copies
 Onshape has terrific community support. Onshape itself has lots of useful <a href="chapter-04-mechanical-design/01-cad/02-onshape-tutorials.html">tutorials</a> for getting started. Additionally, the FRC community provides well-maintained <a href="chapter-04-mechanical-design/01-cad/03-frc-setup.html">part libraries</a> for COTS (Commercial-Off-The-Shelf) parts and FRC-specific <a href="chapter-04-mechanical-design/01-cad/04-frc-cad-tutorials.html">tutorials</a>.</p>
 </li>
 </ul>
-<h3><a class="header" href="#signing-up" id="signing-up">Signing Up</a></h3>
+<h3 id="signing-up"><a class="header" href="#signing-up">Signing Up</a></h3>
 <p>To create a free Onshape education account, navigate <a href="https://www.onshape.com/edu/frc">here</a> and click the button that says &quot;Sign Up Now&quot;. Fill out the form following the on-screen instructions. You can use your personal email even though you're creating an education account. When it asks what you're using Onshape for, simply put &quot;FIRST Robotics Competition&quot;.</p>
-<h3><a class="header" href="#hardware-setup" id="hardware-setup">Hardware Setup</a></h3>
+<h3 id="hardware-setup"><a class="header" href="#hardware-setup">Hardware Setup</a></h3>
 <p>Almost any computer can run Onshape. The most important thing is that you have a fast, stable internet connection.</p>
 <p>Although Onshape runs in the cloud, rendering still takes place on your computer. If you have your own computer, it will probably run Onshape better than a school-issued Chromebook.</p>
 <p>Onshape's rendering process uses a technology called WebGL. You must enable this technology for Onshape to work properly. Making sure WebGL is enabled is simple. If you are using Google Chrome, follow these directions:</p>
@@ -335,13 +339,13 @@ Onshape has terrific community support. Onshape itself has lots of useful <a hre
 <p>If you are using another browser, or if WebGL remains disabled, follow the instructions <a href="https://cad.onshape.com/help/Content/webgl.htm">here</a>.</p>
 <p>If you have both integrated and discrete graphics, then you should make sure Onshape uses discrete graphics. Specific instructions for this depend on your graphics card, but general instructions are available <a href="https://cad.onshape.com/help/Content/webgl.htm">here</a>.</p>
 <p>You will find that Onshape is easiest to use with a mouse. A trackpad will work, but if you have access to a mouse, it will make your experience a lot nicer. Even a cheap mouse will do just fine.</p>
-<h2><a class="header" href="#onshape-tutorials" id="onshape-tutorials">Onshape Tutorials</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="onshape-tutorials"><a class="header" href="#onshape-tutorials">Onshape Tutorials</a></h2>
 <p>Onshape provides hours of free tutorials through the Onshape Learning Center. These tutorials are self-guided, meaning there is no instructor or specific time to take the tutorials. Instead, you watch videos, take short quizzes, and complete practice projects. These projects are the most important part of the tutorials. They give you lots of chances to practice and apply your skills.</p>
 <p>The following courses will cover all the essentials you need to be productive in Onshape. They are grouped into three sections, and you should complete them in order. You might notice some redundancies throughout courses; that is, some courses will repeat content from previous courses. This is generally good because it gets you extra practice.</p>
 <blockquote>
 <p>While working on these courses, you will probably find things that are unclear. If this happens, do not worry. You will almost always be able to continue with a limited understanding, and a future course will better explain whatever you are struggling to understand.</p>
 </blockquote>
-<h3><a class="header" href="#introduction-to-onshape" id="introduction-to-onshape">Introduction to Onshape</a></h3>
+<h3 id="introduction-to-onshape"><a class="header" href="#introduction-to-onshape">Introduction to Onshape</a></h3>
 <p>This section will quickly introduce the basics of CAD and the steps involved in modeling in Onshape.</p>
 <ol>
 <li>
@@ -357,7 +361,7 @@ In this course, you will practice creating parts using sketches and features. On
 You will learn how to assemble parts and how to allow or restrict motion between parts in this course.</p>
 </li>
 </ol>
-<h3><a class="header" href="#modeling-techniques" id="modeling-techniques">Modeling Techniques</a></h3>
+<h3 id="modeling-techniques"><a class="header" href="#modeling-techniques">Modeling Techniques</a></h3>
 <p>This section will take a much more in-depth look at the modeling skills covered in the <a href="chapter-04-mechanical-design/01-cad/02-onshape-tutorials.html#introduction-to-onshape">previous section</a>.</p>
 <ol>
 <li>
@@ -381,7 +385,7 @@ In this course, you will learn how to create multiple parts in one part studio. 
 You will get more practice creating assemblies and learn a few other assembly techniques in this course.</p>
 </li>
 </ol>
-<h3><a class="header" href="#version-control" id="version-control">Version Control</a></h3>
+<h3 id="version-control"><a class="header" href="#version-control">Version Control</a></h3>
 <p>This section will discuss how to version documents and how to deal with other documents from within Onshape and from other CAD systems.</p>
 <ol>
 <li>
@@ -409,32 +413,32 @@ In this course, you will learn how to use parts from other people's documents (s
 This course will explain how to import/export data from/to other CAD systems.</p>
 </li>
 </ol>
-<h2><a class="header" href="#frc-setup" id="frc-setup">FRC Setup</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="frc-setup"><a class="header" href="#frc-setup">FRC Setup</a></h2>
 <p>After completing all of the <a href="chapter-04-mechanical-design/01-cad/02-onshape-tutorials.html">Onshape tutorials</a>, you are ready to start learning how to use Onshape for FRC. This section will take you through setting up Onshape for FRC by installing relevant part libraries and FeatureScripts.</p>
-<h3><a class="header" href="#installing-mkcad" id="installing-mkcad">Installing MKCad</a></h3>
+<h3 id="installing-mkcad"><a class="header" href="#installing-mkcad">Installing MKCad</a></h3>
 <p>MKCad is an FRC part library for Onshape. It contains all kinds of useful COTS (Commercial-Off-The-Shelf) parts such as electronics, gearboxes, bearings, etc. Since it is native to Onshape, you can avoid downloading and importing parts from other CAD systems. You can also be certain that colors and materials are set correctly. Most importantly, the library is actively maintained by team 1836 and the rest of the FRC community. Consequently, new products are added quickly.</p>
 <p>In Onshape, you do not install a part library like MKCad. Instead, you give it a label to access it easily. To do this, navigate to the &quot;Public&quot; tab within the Onshape file explorer. Then, search for &quot;MKCad - &quot;. Select all the documents owned by &quot;Milkenknights Test Account&quot;. Once all the documents are selected, click the label button in the top right corner and create a new label. Call the label &quot;MKCad&quot;.</p>
 <p>To insert a part from MKCad, click the &quot;Insert&quot; button in the top left corner inside your assembly. Then, choose the &quot;Other documents&quot; option. Clicking the &quot;MKCad&quot; label will reveal each document in the MKCad library. From there, you can locate and insert whatever you desire as you would any other part.</p>
 <p><img src="chapter-04-mechanical-design/01-cad/../../img/chapter-04-mechanical-design/03-mkcad-demo.png" alt="A screenshot showing how to insert a part from MKCad into an Onshape assembly" title="Instructions for using an MKCad part" />
 <em>Instructions for using an MKCad part</em></p>
-<h3><a class="header" href="#installing-frc-featurescripts" id="installing-frc-featurescripts">Installing FRC FeatureScripts</a></h3>
+<h3 id="installing-frc-featurescripts"><a class="header" href="#installing-frc-featurescripts">Installing FRC FeatureScripts</a></h3>
 <p>FeatureScript is a programming language specifically for Onshape that allows users to define their own custom features and reuse them. Creating your own FeatureScripts is far beyond the scope of this chapter, but taking advantage of FeatureScripts created by others in the FRC community can save you lots of time.</p>
 <p>The most common FRC FeatureScripts are all contained in one document. To install them, click <a href="https://cad.onshape.com/documents/95c00401c440b44ad8799ef5/w/1f1ebce01a3b8eb6fa102975/e/763aab7b63ad3c30e7177daa">here</a>. Then, click the &quot;Custom features&quot; button in the toolbar. Select every item in the list except &quot;Unit Tests&quot;. At this point, you will find all the FeatureScripts on the right side of your toolbar whenever you open a part studio.</p>
-<h2><a class="header" href="#frc-cad-tutorials" id="frc-cad-tutorials">FRC CAD Tutorials</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="frc-cad-tutorials"><a class="header" href="#frc-cad-tutorials">FRC CAD Tutorials</a></h2>
 <p>Many people in the FRC community provide fantastic tutorials about designing robot subsystems with Onshape. In particular, <a href="https://www.youtube.com/playlist?list=PLxXndvNn_JrJrHks3BxPBEWWAsVOR93kN">this playlist</a> by Nick Aarestad of team 2220 showcases how to design a drivetrain and an intake.</p>
 <p>You should watch the videos in order and follow along on your own computer. You will almost certainly have to pause and repeat parts of the videos frequently, but you will learn a lot about how to efficiently design robots in Onshape.</p>
-<h1><a class="header" href="#electrical" id="electrical">Electrical</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="electrical"><a class="header" href="#electrical">Electrical</a></h1>
 <p>This chapter will explain how to wire a robot and use pneumatics.</p>
-<h1><a class="header" href="#safety" id="safety">Safety</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="safety"><a class="header" href="#safety">Safety</a></h1>
 <p>This chapter will cover safety topics such as shop safety, tool safety, event safety, and COVID-19 safety.</p>
-<h1><a class="header" href="#java-programming" id="java-programming">Java Programming</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="java-programming"><a class="header" href="#java-programming">Java Programming</a></h1>
 <p>This chapter will introduce the fundamentals of the Java programming language. For many of you, this will be your first time coding, so the chapter is designed for someone with absolutely no prior experience. However, if you have experience in another language—or even if you have Java experience but need a refresher—these lessons will still be helpful to you too.</p>
 <p>The concepts introduced in these lessons will cover roughly the same content as the AP Computer Science A curriculum. If you have yet to take that class, these tutorials will prepare you well. If you are currently enrolled, you will find that these tutorials complement your coursework nicely. If you have already taken the class and remember most of it, then you probably don't need these tutorials, but it wouldn't hurt to scan them and see if there are any unfamiliar concepts.</p>
 <p>The first couple of lessons in this chapter will cover some general programming concepts, what makes Java different than other programming languages, and how to set up your computer to begin writing code. After those, the remaining lessons will follow a simple pattern of one lesson followed by one programming exercise. This way, after learning new concepts, you can practice them by writing actual code to complete projects.</p>
 <p>Although this documentation is intended for FRC teams, this chapter can be used for learning Java outside of an FRC context. Only a few passing references are made to FRC, and they are unnecessary for understanding the content of the chapter.</p>
-<h2><a class="header" href="#what-is-java" id="what-is-java">What is Java?</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="what-is-java"><a class="header" href="#what-is-java">What is Java?</a></h2>
 <p>Before writing any code, it is good to have a general idea of what computer programming is in the first place. This lesson will go over what programming languages do and how they interact with computers. In addition, it will explain what sets Java apart from other languages and why it is useful. Finally, this lesson will discuss how Java is used in the real world and in FRC.</p>
-<h3><a class="header" href="#what-are-programming-languages" id="what-are-programming-languages">What are Programming Languages?</a></h3>
+<h3 id="what-are-programming-languages"><a class="header" href="#what-are-programming-languages">What are Programming Languages?</a></h3>
 <p>Even though modern computers may seem to be incredibly powerful and intelligent machines, they are really quite stupid. Computers take instructions from a computer program and interpret them literally. To illustrate this, think about the following sentence:</p>
 <blockquote>
 <p>I saw a person on a hill with a telescope.</p>
@@ -452,7 +456,7 @@ This course will explain how to import/export data from/to other CAD systems.</p
 <p>A CPU takes takes computer programs in the form of machine code and sends electrical signals to execute the programs. Machine code is written in binary (0s and 1s), so it is totally incomprehensible to humans. As a result, we have developed what are known as higher-level programming languages. The higher-level a programming language is, the easier it is for humans to read and write.</p>
 <p>Systems programming languages like C and C++ tend to be the lowest-level languages that humans work with frequently. They are readable by humans, but they are still fairly complicated. They tend to be used in situations where performance (execution speed) is important such graphic-intensive games or database software.</p>
 <p>Above low-level languages like C and C++ are high-level languages like Java, Python, and Ruby. These languages are easier to read and write than low-level languages, but they are normally slower. In addition, they give the programmer far less direct control over the computer. There are some things that you simply cannot do in a high-level language like Java that you can in C++.</p>
-<h3><a class="header" href="#why-use-java" id="why-use-java">Why use Java?</a></h3>
+<h3 id="why-use-java"><a class="header" href="#why-use-java">Why use Java?</a></h3>
 <p>If C and C++ are readable by humans and faster than Java, why would anyone use Java? There are a couple of reasons why people frequently use high-level languages like Java. Firstly, as mentioned already, even though humans can read and write C and C++, it is easier to read and write Java since Java is higher-level. Besides this, in many cases, the difference in speed between C or C++ and Java is unimportant. The final reason that Java is so popular is its philosophy of &quot;write once, run anywhere&quot;.</p>
 <p>To understand this principle, you first must understand how programs written in low-level languages are executed. To run a C program, one must compile it. A compiler translates code in a language like C to machine code that the CPU can execute directly.</p>
 <p>Now, think about all the different computers you have. If you have a laptop and a smartphone, they almost certainly have different CPUs inside. Your laptop almost certainly has a CPU made by Intel or AMD, and your phone probably has a CPU made by Apple, Qualcomm, or Samsung. Although it may seem like it, none of these CPUs functions in exactly the same way. Different CPUs have different types of machine code because they have different sets of instructions they can execute. Desktop/laptop CPUs normally have large instruction sets (x86) to maximize performance while mobile CPUs often have small instruction sets (ARM) to improve battery life.</p>
@@ -460,16 +464,16 @@ This course will explain how to import/export data from/to other CAD systems.</p
 <p>The Java philosophy of &quot;write once, run anywhere&quot; means that after writing and compiling Java code, the same compiled program can run on any computer. The way Java does this is with an intermediate language called Java bytecode. When you compile a Java program, it gets translated into Java bytecode—not machine code. Then, the Java bytecode can be distributed to any computer with a Java Virtual Machine (JVM) installed. The JVM executes Java bytecode by converting it into machine code for the specific CPU. This means that the only people who have to worry about the differences between different CPUs are the people who create the JVM.</p>
 <p>One limitation you might think of to this process is that to run a Java bytecode program, a computer must have a JVM installed. However, Java is so ubiquitous that most computers have it. Indeed, lots of computers come with it preinstalled.</p>
 <p>There are two main software packages that contain a JVM. The Java Runtime Environment (JRE) is intended for consumers. It contains a JVM and several other libraries required to run Java bytecode. The other package is the Java Development Kit (JDK), which is intended for programmers. The JDK includes the JRE and a compiler to translate Java into Java bytecode.</p>
-<h3><a class="header" href="#java-today" id="java-today">Java Today</a></h3>
+<h3 id="java-today"><a class="header" href="#java-today">Java Today</a></h3>
 <p>Java is not the only language to abide by the &quot;write once, run anywhere&quot; principle. There are other programming languages that are compiled into Java bytecode and executed on the JVM. This includes languages like Scala, Kotlin, and Clojure. Each of these languages is newer than Java and improves on some of its flaws.</p>
 <p>Despite the existence of these newer languages, Java still haas a large presence in technology throughout the world. In fact, according to the TIOBE index (a measure of programming language popularity), Java is the second most-used programming language in the world (as of May 2020). The only language more popular is C. Lots of older code is written in Java and needs to be maintained; it would be too expensive to completely rewrite it in another language. In addition, new applications are written in Java all the time. Fields in which Java is common include web development, Android apps, and business applications.</p>
 <p>For the FIRST Robotics Competition, teams can use Java, C++, or LabVIEW. Our team uses Java for a plethora of reasons. LabVIEW is a graphical programming language developed by National Instruments (the company that makes the roboRIO), and it is meant to be easy for rookie teams to use, but its graphical syntax makes it cumbersome for experienced teams like us. C++ is a very powerful and popular language, but it is needlessly complicated for our team. In addition, its extra speed compared to Java is unnecessary for FRC. Most importantly, the AP Computer Science classes in our school district teach Java, so we have far more people with experience in it than in C++.</p>
-<h2><a class="header" href="#hello-world" id="hello-world">Hello World</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="hello-world"><a class="header" href="#hello-world">Hello World</a></h2>
 <p>In this lesson, we will go over how to set up Repl.it and use it to write and execute Java programs.</p>
-<h3><a class="header" href="#why-use-replit" id="why-use-replit">Why use Repl.it?</a></h3>
+<h3 id="why-use-replit"><a class="header" href="#why-use-replit">Why use Repl.it?</a></h3>
 <p>Repl.it is an online Java editor (it works with other programming languages too, but we're just using it for Java). As such, it lets you write and run Java programs from any computer. Think of it as Google Docs but for programming in Java. If you read <a href="chapter-07-java-programming/01-lesson-what-is-java.html">What is Java?</a> (which you should have), then you know that to write and run Java code, you need a JDK installed. Repl.it comes with a JDK built-in, so compiling and executing a Java program is as simple as clicking a button. These features are great for learning because they make getting started incredibly simple. This is why we will use Repl.it in these lessons.</p>
 <p>However, rarely do professionals use Repl.it for writing their code. There are a few reasons for this. The first is that Repl.it is slow. When learning, it doesn't feel overly slow, but when writing large applications with lots of files, it slows down, and the small delays add up. Another reason that few professionals use Repl.it is it stores your code on the cloud. This poses a potential security issue for people working on private software or dealing with classified information. The final (and most significant) reason that Repl.it doesn't work for professionals is that it doesn't offer enough flexibility. Professionals need to be able to have complete control over the computers they write their code on. Without going into too much detail, certain types of programming are difficult or impossible using Repl.it. For instance, developing robot code for FRC is not really possible using Repl.it (the chapter on FRC programming explains how to set up another editor).</p>
-<h3><a class="header" href="#a-tour-of-replit" id="a-tour-of-replit">A Tour of Repl.it</a></h3>
+<h3 id="a-tour-of-replit"><a class="header" href="#a-tour-of-replit">A Tour of Repl.it</a></h3>
 <p>To get started, go to <a href="https://repl.it/">repl.it</a> on your computer and click the button in the top right corner to create an account. You can sign in with Google or use your email address.</p>
 <p>Each project on Repl.it is called a repl. You will create a new repl for each of the projects in this chapter. Once your account is created, click the button that says &quot;+ new repl&quot; in the top right corner. You should see a few options for your repl. For the language, pick &quot;Java&quot;. Be careful as there are several other options with Java in the name including &quot;JavaScript&quot;, &quot;Java Swing&quot;, and &quot;Java Processing using Processing.js&quot;. These options are all incorrect. For the project name, pick whatever makes sense to you. It is important to give your projects meaningful names to keep your code organized in case you need to look back at it. I suggest you name this project &quot;HelloWorld&quot;. Assuming you are on the free plan for Repl.it, you must leave your repl accessible to the public, but that won't be a problem.</p>
 <p><img src="chapter-07-java-programming/../img/chapter-07-java-programming/02-lesson-hello-world.png" alt="The user interface of a new Java repl called HelloWorld" title="A new Java repl called HelloWorld" />
@@ -487,9 +491,9 @@ This course will explain how to import/export data from/to other CAD systems.</p
 <p>On the right side of the screen is a large pane called the console. This is where the results of your program will appear. It is also where you can input data to your program if necessary (e.g. if your program asks for your username, you can type it in the console). If you haven't run a program yet, the console should begin with something like <code>OpenJDK Runtime Environment (build 11.0.6+10-post-Ubuntu-1ubuntu118.04.1)</code>. If you have run a program, you can refresh the page, and the console should reset to that text. Taking a look at the text, <code>OpenJDK</code> is the type of JDK that is compiling and running your code. The version of Java is 11.0.6 (it might be a higher version for you). As of June 2020, FRC uses Java 11, so everything you learn using Repl.it should be valid FRC code.</p>
 <p>When you are ready, you can run the program by clicking the &quot;run&quot; button on the menu bar. After a few seconds, you should see the text <code>Hello world!</code> appear in the console (note that there might be a few lines of gibberish before it). Congratulations on running your first bit of Java code! At this point, you can confirm Repl.it is working properly. As a general rule, problems caused by Repl.it can be fixed by refreshing the page.</p>
 <p>Take a few minutes to explore the Repl.it interface. Make sure you're comfortable with creating projects, locating existing projects, and running your code. Once you feel ready, you can move on to the next lesson. There, you'll start learning to actually write code!</p>
-<h2><a class="header" href="#printing-and-commenting" id="printing-and-commenting">Printing and Commenting</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="printing-and-commenting"><a class="header" href="#printing-and-commenting">Printing and Commenting</a></h2>
 <p>To begin, this lesson will take a look at the <code>Hello world!</code> program you created in the previous <a href="chapter-07-java-programming/02-lesson-hello-world.html">lesson</a>. We will cover important points about the structure of that program. Then, we will discuss how you can print whatever text you want to the console. Finally, we will talk about commenting your code.</p>
-<h3><a class="header" href="#hello-world-1" id="hello-world-1">Hello World!</a></h3>
+<h3 id="hello-world-1"><a class="header" href="#hello-world-1">Hello World!</a></h3>
 <p>Go ahead and create a new Java Repl. I suggest you call it <code>PrintingAndComemnting</code>. Just like in the last lesson, there should be a little bit of autogenerated code:</p>
 <pre><code class="language-java">class Main {
   public static void main(String[] args) {
@@ -511,7 +515,7 @@ compiler exit status 1
 </code></pre>
 <p>This error is fairly simple, but reading error messages is an important skill. The first line of the error message is the most important. It says that there is an error in the file <code>Main.java</code> on line 3. The compiler expects a semicolon there, but there isn't one. Then, the error message points to where a semicolon should be at the end of the line. Next, the compiler says there was 1 error in total. If we had multiple errors in our code, that number would be higher. Finally, it says the compiler exited with status code 1. Status codes indicate whether or not the program finished running. If a program exits with status code 0, that means it finished as expected. If a program exits with any nonzero status code, there was an error somewhere that prevented it from finishing properly. Because we are missing a semicolon at the end of line 3, the compiler exited with status code 1.</p>
 <p>If you put the semicolon back where the error message tells you, the program will run again, printing <code>Hello world!</code> to the console.</p>
-<h3><a class="header" href="#basic-printing" id="basic-printing">Basic Printing</a></h3>
+<h3 id="basic-printing"><a class="header" href="#basic-printing">Basic Printing</a></h3>
 <p>Now that you have a general idea about how Java programs execute, you can start printing other text to the console. As discussed in the previous section, statements in the <code>main</code> method are executed sequentially. If we want to print <code>Hello world!</code> to the console twice, we just need to duplicate the statement that prints it, and the two statements will be executed one after another. The following program prints <code>Hello world!</code> to the console twice:</p>
 <pre><code class="language-java">class Main {
   public static void main(String[] args) {
@@ -544,7 +548,7 @@ It was founded in 1998. In 2020, the team won the Lake Superior Regional.
 </code></pre>
 <p>The first statement prints the text <code>FRC Team 167 is the oldest robotics team in Iowa.</code> followed by a newline since it is a <code>println</code> statement (<code>println</code> stands for &quot;print line&quot;). The second statement prints <code>It was founded in 1998. </code>. Notice there is a space at the end because there is a space before the closing quotation mark in the statement. Additionally, notice that there is not a newline character at the end because we used <code>print</code> instead of <code>println</code>. As such, the last statement starts printing on the same line the second statement left off on. It prints the text <code>In 2020, the team won the Lake Superior Regional.</code> followed by a newline.</p>
 </details>
-<h3><a class="header" href="#escape-sequences" id="escape-sequences">Escape Sequences</a></h3>
+<h3 id="escape-sequences"><a class="header" href="#escape-sequences">Escape Sequences</a></h3>
 <p>Take a look at the following program. Can you guess what it prints to the console?</p>
 <pre><code class="language-java">class Main {
   public static void main(String[] args) {
@@ -576,7 +580,7 @@ text.
 <p>Using the <code>\n</code> escape sequence, you can mimic the behavior of the <code>println</code> statement using <code>print</code>. <code>System.out.println(&quot;This is some text.&quot;);</code> and <code>System.out.print(&quot;This is some text.\n&quot;);</code> are equivalent. However, the <code>println</code> statement is preferred because it is more readable.</p>
 <p>To print the backslash character itself, you need to escape the backslash with another backslash. This means that to print <code>\</code>, you must use <code>\\</code> inside your quotes.</p>
 <p>There are several other escape sequences in Java. You have learned the most important ones, but if you're curious, you can check out this <a href="https://www.geeksforgeeks.org/escape-sequences-in-java/">website</a> to learn the others.</p>
-<h3><a class="header" href="#comments" id="comments">Comments</a></h3>
+<h3 id="comments"><a class="header" href="#comments">Comments</a></h3>
 <p>Comments allow us to write notes to ourselves in our code. We can use them to explain what code does or why we made a particular decision to do something in a certain way. In small programs like those you are writing right now, they often seem pointless, but in large applications, they are super important for figuring out what is going on. If you ever come back to code you wrote six months ago or if you have to use code someone else wrote, comments help you figure out what the code is doing.</p>
 <p>There are three types of comments in Java. The first type is a single-line comment. Single-line comments begin with <code>//</code>. After that, you can write anything you want for the rest of the line, and the compiler will ignore it. For instance, the following program contains a comment explaining what the <code>print</code> statement is doing:</p>
 <pre><code class="language-java">class Main {
@@ -598,9 +602,9 @@ text.
 }
 </code></pre>
 <p>The final type of comment is a special type of multi-line comment called JavaDoc. We won't discuss this now because it requires learning about objects and methods first.</p>
-<h2><a class="header" href="#project-face-printing" id="project-face-printing">Project: Face Printing</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="project-face-printing"><a class="header" href="#project-face-printing">Project: Face Printing</a></h2>
 <p>This project will test your skills using Repl, printing text to the console, and commenting your code. Since it is the first project of the chapter, it will be fairly brief.</p>
-<h3><a class="header" href="#assignment" id="assignment">Assignment</a></h3>
+<h3 id="assignment"><a class="header" href="#assignment">Assignment</a></h3>
 <p>The goal of this project is to print the following image and caption to the console:</p>
 <pre><code class="language-text">  /////
  |     |
@@ -614,10 +618,10 @@ A &quot;drawing&quot; of a face
 </code></pre>
 <p>To begin, create a Repl called <code>FacePrinting</code>. Find a way to print the text to the console. Even though it is not actually necessary, make use of a mix of <code>println</code> and <code>print</code> statements to get practice with both. You will have to use a few escape sequences in this project. Also, be mindful of the whitespace in the text. For example, there is a blank line between the image and the caption. </p>
 <p>Add a multi-line comment at the beginning of your code that contains your name and grade in school. Then, use single-line comments to explain what part of the body is printed by each <code>println</code> and <code>print</code> statement.</p>
-<h3><a class="header" href="#output" id="output">Output</a></h3>
+<h3 id="output"><a class="header" href="#output">Output</a></h3>
 <p>This embedded Repl illustrates what your program should print to the console once it works correctly. However, keep in mind that comments are part of this assignment too, so you might not be quite done just because your output looks like this.</p>
 <iframe height="400px" width="100%" src="https://repl.it/@dominicrutk/FacePrinting?lite=true&outputonly=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
-<h3><a class="header" href="#reference-implementation" id="reference-implementation">Reference Implementation</a></h3>
+<h3 id="reference-implementation"><a class="header" href="#reference-implementation">Reference Implementation</a></h3>
 <p>There are an infinite number of ways to implement this program. However, if you are stuck, you can look at the reference implementation below to see one way of doing it.</p>
 <details>
 <summary>Click to reveal the reference implementation</summary>
@@ -652,9 +656,9 @@ A &quot;drawing&quot; of a face
 }
 </code></pre>
 </details>
-<h2><a class="header" href="#variables" id="variables">Variables</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="variables"><a class="header" href="#variables">Variables</a></h2>
 <p>This lesson will focus on variables. We will begin by looking at what variables are and how to create them. We will then talk about important data types and how to perform arithmetic operations on numerical data types. We will also look at constants and where they should be used.</p>
-<h3><a class="header" href="#variables-and-data-types" id="variables-and-data-types">Variables and Data Types</a></h3>
+<h3 id="variables-and-data-types"><a class="header" href="#variables-and-data-types">Variables and Data Types</a></h3>
 <p>Fundamentally, every computer program manipulates some sort of input to produce some sort of output. For instance, a video game takes signals from the keyboard and mouse and uses them to determine movement and other actions to be performed. Likewise, a robot program takes signals from a controller and readings from various sensors. It converts these to many outputs such as motor speeds. To manipulate inputs and determine outputs, programs need to store data.</p>
 <p>In Java, we can store data using variables. Every variable has a type, a name, and a value. For example, imagine a program wanted to store a user's age. The data type of the variable would be an integer (a number without a decimal) because ages are represented as integers. The name of the variable might be something like <code>userAge</code>. The value of the variable would be 42 (or however old the user is).</p>
 <blockquote>
@@ -671,18 +675,19 @@ A &quot;drawing&quot; of a face
 <pre><code class="language-java">type name = value;
 </code></pre>
 <p>Before we go into more detail about what we can do with variables, we should discuss variable types and names. The data types in the following table are the most important ones to know. They will appear in almost every program. If you're curious about other Java data types, you can read about them <a href="https://www.tutorialspoint.com/java/java_basic_datatypes">here</a>.</p>
-<table><thead><tr><th align="left">Type</th><th align="left">Definition</th><th align="left">Example Values</th></tr></thead><tbody>
-<tr><td align="left"><code>int</code></td><td align="left">A number without a decimal</td><td align="left"><code>0</code>, <code>42</code>, <code>-3</code></td></tr>
-<tr><td align="left"><code>double</code></td><td align="left">A number with a decimal</td><td align="left"><code>3.14</code>, <code>-2.718</code>, <code>1.0</code></td></tr>
-<tr><td align="left"><code>boolean</code></td><td align="left">True or false</td><td align="left"><code>true</code>, <code>false</code></td></tr>
-<tr><td align="left"><code>char</code></td><td align="left">One character in single quotes</td><td align="left"><code>'a'</code>, <code>'B'</code>, <code>'_'</code>, <code>'7'</code></td></tr>
-<tr><td align="left"><code>String</code></td><td align="left">A sequence of text in double quotes</td><td align="left"><code>&quot;This is a string&quot;</code>, <code>&quot;&quot;</code></td></tr>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Type</th><th style="text-align: left">Definition</th><th style="text-align: left">Example Values</th></tr></thead><tbody>
+<tr><td style="text-align: left"><code>int</code></td><td style="text-align: left">A number without a decimal</td><td style="text-align: left"><code>0</code>, <code>42</code>, <code>-3</code></td></tr>
+<tr><td style="text-align: left"><code>double</code></td><td style="text-align: left">A number with a decimal</td><td style="text-align: left"><code>3.14</code>, <code>-2.718</code>, <code>1.0</code></td></tr>
+<tr><td style="text-align: left"><code>boolean</code></td><td style="text-align: left">True or false</td><td style="text-align: left"><code>true</code>, <code>false</code></td></tr>
+<tr><td style="text-align: left"><code>char</code></td><td style="text-align: left">One character in single quotes</td><td style="text-align: left"><code>'a'</code>, <code>'B'</code>, <code>'_'</code>, <code>'7'</code></td></tr>
+<tr><td style="text-align: left"><code>String</code></td><td style="text-align: left">A sequence of text in double quotes</td><td style="text-align: left"><code>&quot;This is a string&quot;</code>, <code>&quot;&quot;</code></td></tr>
 </tbody></table>
+</div>
 <p>One important thing to take note of is that <code>int</code>, <code>double</code>, <code>boolean</code>, and <code>char</code> all start with a lowercase letter. This is because they are primitive types. In contrast, <code>String</code> starts with an uppercase letter because it is an object type. We will discuss what that means in a later lesson, but for now, just know that a bit of text is a <code>String</code>—not a <code>string</code>.</p>
 <p>Variable names can contain letters, numbers, and the underscore character (<code>_</code>). They cannot start with a number, and they are case sensitive, so <code>accountBalance</code> and <code>aCcOuNtBaLaNcE</code> are different. Variable names should describe the data stored in the variable. For instance, a variable containing an account balance should be called <code>accountBalance</code> instead of <code>x</code>.</p>
 <p>In Java, variable names are normally written in <code>camelCase</code>. This means that the first word is lower case, and each word thereafter begins with a capital letter. There are no spaces since spaces are not allowed in variable names. <code>userPassword</code>, <code>studentGrade</code>, and <code>name</code> are examples of <code>camelCase</code> names. </p>
 <p>You might occasionally see variable names in <code>snake_case</code>, where every letter is lower case and words are separated by underscores. However, <code>camelCase</code> is more common in Java. Most people who use <code>snake_case</code> used it in another programming language and kept using it when they learned Java.</p>
-<h3><a class="header" href="#reading-variables" id="reading-variables">Reading Variables</a></h3>
+<h3 id="reading-variables"><a class="header" href="#reading-variables">Reading Variables</a></h3>
 <p>After creating a variable, its value can be accessed by simply writing the variable name. For instance, the following program prints the value of the variable <code>answer</code>, which is <code>42</code>:</p>
 <pre><code class="language-java">int answer = 42;
 System.out.println(answer);
@@ -693,7 +698,7 @@ System.out.println(answer);
 System.out.println(&quot;The answer is &quot; + answer + &quot;.&quot;);
 </code></pre>
 <p>This program prints <code>The answer is 42.</code> to the console. We will discuss other uses of the <code>+</code> operator and other operators <a href="chapter-07-java-programming/04-lesson-variables.html#basic-arithmetic-operators-and-casting">later</a> in the section.</p>
-<h3><a class="header" href="#updating-variables" id="updating-variables">Updating Variables</a></h3>
+<h3 id="updating-variables"><a class="header" href="#updating-variables">Updating Variables</a></h3>
 <p>After initializing a variable, you can change its value using a similar syntax but without the data type. For instance, the following program initializes an integer variable called <code>grade</code> to the value <code>87</code>. Then, it updates the variable's value to <code>93</code> and prints <code>93</code> to the console.</p>
 <pre><code class="language-java">int grade = 87;
 grade = 93;
@@ -709,7 +714,7 @@ gradeLevel = &quot;sophomore&quot;;
                  ^
 </code></pre>
 <p>Java knows that the variable <code>gradeLevel</code> is an integer, so it requires that the new value of <code>gradeLevel</code> also be an integer. Since it cannot find a way to convert the string <code>&quot;sophomore&quot;</code> to an integer, it fails to compile and gives an error.</p>
-<h3><a class="header" href="#uninitialized-variables" id="uninitialized-variables">Uninitialized Variables</a></h3>
+<h3 id="uninitialized-variables"><a class="header" href="#uninitialized-variables">Uninitialized Variables</a></h3>
 <p>You just learned that variables can be initialized with the <code>type name = value;</code> syntax. However, it is also possible to create variables without a value. This is called declaring a variable:</p>
 <pre><code class="language-java">String favoriteColor;
 </code></pre>
@@ -724,7 +729,7 @@ System.out.println(&quot;The price is &quot; + price);
                                          ^
 </code></pre>
 <p>This error makes sense because if there isn't a <code>price</code> for an item, we can't print what the price is. The Java compiler catches this mistake for us so we can fix our code instead of showing users a missing price.</p>
-<h3><a class="header" href="#basic-arithmetic-operators-and-casting" id="basic-arithmetic-operators-and-casting">Basic Arithmetic Operators and Casting</a></h3>
+<h3 id="basic-arithmetic-operators-and-casting"><a class="header" href="#basic-arithmetic-operators-and-casting">Basic Arithmetic Operators and Casting</a></h3>
 <p>You already <a href="chapter-07-java-programming/04-lesson-variables.html#reading-variables">learned</a> that the <code>+</code> operator can be used to combine text with variable values. However, it can also be used to add two numbers together. Consider the following code sample:</p>
 <pre><code class="language-java">int apples = 4;
 int oranges = 9;
@@ -756,7 +761,7 @@ double cost = (double) bill / friends;
 System.out.println(&quot;Each person has to pay $&quot; + cost);
 </code></pre>
 <p>Since <code>bill</code> is cast as a double, Java is diving a double by an integer. When division involves a double, the result is a double. Therefore, the result of the division is 17.5 as expected. So, the program correctly prints <code>Each person has to pay $17.5</code>.</p>
-<h3><a class="header" href="#more-operators" id="more-operators">More Operators</a></h3>
+<h3 id="more-operators"><a class="header" href="#more-operators">More Operators</a></h3>
 <p>There are a few more things about operators and arithmetic you should know before moving on.</p>
 <p>Firstly, the modulo operator (<code>%</code>) calculates the remainder in integer division. For example, the following code sample prints <code>The remainder is 1</code>:</p>
 <pre><code class="language-java">int remainder = 5 % 2;
@@ -807,7 +812,7 @@ System.out.println(value);
 </code></pre>
 <p>Although the increment and decrement operators work on doubles, they are generally only used on integers.</p>
 <p>Finally, you should be aware that Java follows PEMDAS for order of operations (we haven't discussed exponents yet). This means that you can use parentheses to specify the order of operations. In fact, it is often a good idea to do this even if it isn't strictly necessary. It makes your code easier to follow and protects it from changes which might inadvertently impact the order of operations.</p>
-<h3><a class="header" href="#constants" id="constants">Constants</a></h3>
+<h3 id="constants"><a class="header" href="#constants">Constants</a></h3>
 <p>As discussed <a href="chapter-07-java-programming/04-lesson-variables.html#updating-variables">earlier</a>, variable values can be reassigned. Most of the time, this is the desired behavior, but sometimes, we want to store values that cannot change. To illustrate the reasoning behind this, think about designing a program that calculates the areas of several circles given their radii:</p>
 <blockquote>
 <p>Recall that the formula for the area \( A \) of a circle with radius \( r \) is given by:
@@ -846,9 +851,9 @@ System.out.println(&quot;A circle with a radius of 5 has an area of &quot; + (PI
 <p>This code sample solves our problem by preventing the value of <code>PI</code> from changing in the middle of the program.</p>
 <p>Note that constants have different naming conventions than mutable variables (variables whose values can change). Constants are often written in <code>SCREAMING_SNAKE_CASE</code>. This means that every letter is capitalized, and underscores separate words. Another acceptable way to name constants is with regular <code>camelCase</code> prefixed with a <code>k</code>. For instance, the name of a constant that stores the maximum speed might be <code>MAX_SPEED</code> or <code>kMaxSpeed</code>. It is important to choose one convention and stick with it within a project.</p>
 <p>This example is somewhat contrived, so it doesn't fully illustrate the importance of constants. When you begin to work on larger projects, it will become clearer how helpful it is to mark variables whose values shouldn't change as <code>final</code>.</p>
-<h2><a class="header" href="#project-temperature-converter" id="project-temperature-converter">Project: Temperature Converter</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="project-temperature-converter"><a class="header" href="#project-temperature-converter">Project: Temperature Converter</a></h2>
 <p>This project will test your skills creating variables, using arithmetic operators, and casting.</p>
-<h3><a class="header" href="#assignment-1" id="assignment-1">Assignment</a></h3>
+<h3 id="assignment-1"><a class="header" href="#assignment-1">Assignment</a></h3>
 <p>The goal of this project is to write a Java program that converts Celsius temperatures to Fahrenheit and Kelvin temperatures.</p>
 <blockquote>
 <p>Recall that the Fahrenheit temperature \( F(c) \) given a Celsius temperature \( c \) is defined as:
@@ -863,10 +868,10 @@ Additionally, the Kelvin temperature \( K(c) \) given a Celsius temperature \( c
 <p>After that line, create a variable to store the Fahrenheit temperature and another variable to store the Kelvin temperature. Make sure to use the correct data types for these variables, keeping in mind that an integral input in Celsius might lead to a decimal output in Fahrenheit or Kelvin. Use the arithmetic operators you learned and the above formulas to give these variables their values.</p>
 <p>Next, print the Fahrenheit and Kelvin temperatures to the console.</p>
 <p>If the user enters anything other than an integer as the Celsius temperature, the program will crash. You do not have to worry about this. You can assume that the user input is valid.</p>
-<h3><a class="header" href="#output-1" id="output-1">Output</a></h3>
+<h3 id="output-1"><a class="header" href="#output-1">Output</a></h3>
 <p>This embedded Repl illustrates how your program should work. It also shows the exact format that the output should be in.</p>
 <iframe height="400px" width="100%" src="https://repl.it/@dominicrutk/TemperatureConverter?lite=true&outputonly=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
-<h3><a class="header" href="#reference-implementation-1" id="reference-implementation-1">Reference Implementation</a></h3>
+<h3 id="reference-implementation-1"><a class="header" href="#reference-implementation-1">Reference Implementation</a></h3>
 <p>If you are stuck, you can look at the reference implementation below to see how to write this program.</p>
 <details>
 <summary>Click to reveal the reference implementation</summary>
@@ -885,38 +890,151 @@ Additionally, the Kelvin temperature \( K(c) \) given a Celsius temperature \( c
 }
 </code></pre>
 </details>
-<h2><a class="header" href="#conditionals" id="conditionals">Conditionals</a></h2>
-<p>This is a test page. This page will explain how to use if statements and switch blocks.</p>
-<h2><a class="header" href="#loops-and-recursion" id="loops-and-recursion">Loops and Recursion</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="conditionals"><a class="header" href="#conditionals">Conditionals</a></h1>
+<p>This lesson will focus on conditionals. We will begin by looking at what conditionals are and the different types of conditional logic and statements.</p>
+<h2 id="what-are-conditionals"><a class="header" href="#what-are-conditionals">What are conditionals?</a></h2>
+<p>Conditionals are code statements that allow a program to choose what code to run when encountering different situations. For example, a videogame may need to choose between opening a door when the player has a key and telling the player that they don’t have a key.</p>
+<h2 id="conditional-logic"><a class="header" href="#conditional-logic">Conditional logic</a></h2>
+<p>In Java, all conditional logic outputs booleans, and most conditional statements take booleans as inputs.
+Java has a variety of built-in conditional logic, mainly derived from mathematics:
+| Conditional Logic | Name | Description |
+| :--- | :---: | ---: |
+|<code>A &lt; B</code>| Less than | Outputs <code>true</code> if the value of <code>A</code> is less than <code>B</code>. |
+|<code>A &gt; B</code>| Greater than | Outputs <code>true</code> if the value of <code>A</code> is greater than <code>B</code>. |
+|<code>A &lt;= B</code>| Less than or equal to | Outputs <code>true</code> if the value of <code>A</code> is less than or equal to <code>B</code>. |
+|<code>A &gt;= B</code>| Greater than or equal to | Outputs <code>true</code> if the value of <code>A</code> is greater than or equal to <code>B</code>. |
+|<code>A == B</code>| Equal to | Outputs <code>true</code> if <code>A</code> is EXACTLY equal to <code>B</code>. |
+|<code>A != B</code>| Not equal to | Outputs <code>true</code> if <code>A</code> ISN’T exactly equal to <code>B</code>. |
+|<code>A \|\| B</code>| Or | Outputs <code>true</code> if EITHER the value of <code>A</code> or <code>B</code> is <code>true</code>. |
+|<code>A &amp;&amp; B</code>| And | outputs <code>true</code> if BOTH the value of <code>A</code> and <code>B</code> is <code>true</code>. |
+|<code>A ^ B</code>| Xor/Exclusive or | Outputs <code>true</code> if either the value of <code>A</code> or <code>B</code> is <code>true</code> but outputs <code>false</code> if BOTH are <code>true</code>. |
+|  <code>!A</code> | Not | Outputs whatever is the inverse of <code>A</code>, such as <code>false</code> if <code>A</code> is <code>true</code>, or <code>true</code> if <code>A</code> is <code>false</code>. |</p>
+<p>Conditional logic can also be methods that return boolean values.</p>
+<blockquote>
+<p><code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>==</code>, and <code>!=</code> can only be used on number data types such as ints and doubles. They cannot be used to compare Strings. For comparing Strings, use <code>.equals()</code>. See <a href="https://docs.iowacityrobotics.org/chapter-07-java-programming/07-lesson-object-oriented-basics.html">Object Oriented Basics</a> for more info.</p>
+<p>Likewise, <code>||</code>, <code>&amp;&amp;</code>, <code>^</code>, and <code>!</code> can only be used on boolean values.</p>
+</blockquote>
+<h2 id="conditional-statements"><a class="header" href="#conditional-statements">Conditional statements</a></h2>
+<p>Java has a number of conditional statements that will choose between different code based on the input.</p>
+<h3 id="ifelse"><a class="header" href="#ifelse">If/Else</a></h3>
+<p>Syntax:</p>
+<pre><code class="language-java">if (conditional_logic) {
+   //Code to run if the conditional is true.
+} else { //Else statements are optional
+   //Code to run if the conditional is false.
+}
+</code></pre>
+<p>If statements, as their name implies, run code if the conditional is <code>true</code>. Optionally, it can run <code>else</code> statements if the conditional is <code>false</code>.</p>
+<p>You can chain if/else statements together by using else if statements, however, it is not recommended as it’s harder to read and usually worse-performing than switch statements.</p>
+<pre><code class="language-java">if (conditional_logic_a) {
+    //Code to run if conditional a is true
+} else if (conditional_logic_b) {
+    //Code to run if conditional a is false AND conditional b is true
+}
+</code></pre>
+<blockquote>
+<p>Java does not have a statement that combines <code>else</code> and <code>if</code>, such as Python’s <code>elif</code>.</p>
+</blockquote>
+<h3 id="while"><a class="header" href="#while">While</a></h3>
+<p>Syntax:</p>
+<pre><code class="language-java">while (conditional_logic) {
+    //Code to loop while the conditional is true
+}
+</code></pre>
+<p>A while loop continuously repeats code inside of it while the statement is true, checking once before running the code.</p>
+<p>Another method of using while loops, although not recommended, is using a while true loop with a break statement. While true loops will keep running code inside it forever until the code inside calls a break statement, so if the break statement fails to run properly for whatever reason, it will stall the program.</p>
+<pre><code class="language-java">while (true) {
+    //Code to run until the conditional is true
+    if (conditional_logic) {
+        break; //Forces the loop to end
+    }
+}
+</code></pre>
+<h4 id="do-while"><a class="header" href="#do-while">Do while</a></h4>
+<pre><code class="language-java">Do {
+    //Code to loop while the conditional is true
+} while (conditional_logic)
+</code></pre>
+<p>Do while loops are, effectively, just normal while loops with different syntax.</p>
+<h2 id="switch"><a class="header" href="#switch">Switch</a></h2>
+<p>Syntax:</p>
+<pre><code class="language-java">switch (input) {
+    case a:
+        //Code to run if the input is equal to a
+        break; //As switch statements don’t use brackets for their syntax, break statements are needed to close a case.
+    case b:
+        //Code to run if the input is equal to b
+        break;
+    case c:
+        //Code to run if the input is equal to c
+        break;
+    default: //Optional but recommended
+        //Code to run if the input matches none of the above. Doesn’t need a break statement as it’s the last case.
+}
+</code></pre>
+<p>Switch statements are a special type of conditional statement, not requiring a boolean input. Instead, it can take any data type as its input. It will look from the top to the bottom, checking to see if the input matches any of the cases, and if not, it will look for a default case, running the code inside the case that matched first.</p>
+<p>The following if/else chain is functionally equivalent to a switch statement:</p>
+<pre><code class="language-java">if (input == a) {
+    //Case a
+} else if (input == b) {
+    //Case b
+} else if (input == c) {
+    //Case c
+} else {
+    //Default case
+}
+</code></pre>
+<h2 id="de-morgans-laws"><a class="header" href="#de-morgans-laws">De Morgan's laws</a></h2>
+<p><a href="https://en.wikipedia.org/wiki/De_Morgan&#x27;s_laws">De Morgan's laws</a> state that boolean statements can be written in multiple ways and still have the same effect. To make a long story short, it's similar to multiplicative distribution in math.</p>
+<p>For example, <code>x*y + z*y</code> is the exact same as <code>y*(x+z)</code>. Likewise, <code>!a &amp;&amp; !b</code> and <code>!(a &amp;&amp; b)</code> both have the exact same output.</p>
+<p>Some other examples would be:</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Statement</th><th style="text-align: right">Functional equivalent</th></tr></thead><tbody>
+<tr><td style="text-align: left"><code>a &amp;&amp; b</code></td><td style="text-align: right"><code>!(a \|\| b)</code></td></tr>
+<tr><td style="text-align: left"><code>(a &amp;&amp; b) &amp;&amp; (a &amp;&amp; c)</code></td><td style="text-align: right"><code>a &amp;&amp; (b &amp;&amp; c)</code></td></tr>
+</tbody></table>
+</div>
+<h2 id="short-circuting"><a class="header" href="#short-circuting">Short-circuting</a></h2>
+<p>One of Java's little quirks is that it will skip evaluating the rest of a condition if it can assume the output. For example, it will not fully evaluate <code>false &amp;&amp; true</code> as Java sees <code>false &amp;&amp;</code> and automatically assumes the statement to be false.</p>
+<p>This can be avoided if you use <code>&amp;</code> or <code>|</code> instead of <code>&amp;&amp;</code> or <code>||</code> as they force Java to not short-circut.</p>
+<p>Example code:</p>
+<pre><code class="language-java">public static boolean shorterThan(String input, int length) {
+    // This method checks if input is shorter than the specified length, IE returns false if input == &quot;apple&quot; and length == 4.
+    return input != null &amp;&amp; input.length() &lt; length; //If input is null, it will short-circut and return false, preventing input.length() from trying to find the length of a null value and throwing an error.
+}
+</code></pre>
+<p>Example code: (No short-circut)</p>
+<pre><code class="language-java">public static boolean shorterThan(String input, int length) {
+    return input != null &amp; input.length() &lt; length; //If input is null, a NullPointerException will be thrown as it was not short-circuted and input.length() ran on a null value. 
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="loops-and-recursion"><a class="header" href="#loops-and-recursion">Loops and Recursion</a></h2>
 <p>This is a test page. This page will explain while loops, do while loops, for loops, and recursion.</p>
-<h2><a class="header" href="#object-oriented-basics" id="object-oriented-basics">Object-Oriented Basics</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="object-oriented-basics"><a class="header" href="#object-oriented-basics">Object-Oriented Basics</a></h2>
 <p>This is a test page. This page will explain the basics of object-oriented programming.</p>
-<h2><a class="header" href="#visibility-and-statics" id="visibility-and-statics">Visibility and Statics</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="visibility-and-statics"><a class="header" href="#visibility-and-statics">Visibility and Statics</a></h2>
 <p>This is a test page. This page will explain visibility modifiers, the static keyword, and the singleton design pattern.</p>
-<h2><a class="header" href="#polymorphism" id="polymorphism">Polymorphism</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="polymorphism"><a class="header" href="#polymorphism">Polymorphism</a></h2>
 <p>This is a test page. This page will explain what polymorphism is and how to use it including interfaces, inheritance, and abstract classes.</p>
-<h2><a class="header" href="#arrays-and-collections" id="arrays-and-collections">Arrays and Collections</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="arrays-and-collections"><a class="header" href="#arrays-and-collections">Arrays and Collections</a></h2>
 <p>This is a test page. This page will explain arrays and important collections including ArrayLists, Stacks, and Queues.</p>
-<h2><a class="header" href="#miscellaneous" id="miscellaneous">Miscellaneous</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="miscellaneous"><a class="header" href="#miscellaneous">Miscellaneous</a></h2>
 <p>This is a test page. This page will explain relevant topics that don't fit into another page or provide resources for them. Some ideas for topics include variadic arguments, multithreading, generics, lambda functions, and initializer blocks.</p>
-<h1><a class="header" href="#frc-programming" id="frc-programming">FRC Programming</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="frc-programming"><a class="header" href="#frc-programming">FRC Programming</a></h1>
 <p>This chapter will talk about FRC programming. This includes updating control system firmware, controlling different actuators, organizing robot programs, and using PID controllers.</p>
-<h1><a class="header" href="#git" id="git">Git</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="git"><a class="header" href="#git">Git</a></h1>
 <p>This chapter will explain how to use Git and GitHub to track version history and collaborate with others. It will also introduce command line basics in the process.</p>
-<h1><a class="header" href="#web-development" id="web-development">Web Development</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="web-development"><a class="header" href="#web-development">Web Development</a></h1>
 <p>This chapter will cover the basics of HTML, CSS, and JavaScript so that people can update the team website. It will also discuss Node.js, Express, and SQL databases so that people can develop the scouting app.</p>
-<h1><a class="header" href="#scouting-and-strategy" id="scouting-and-strategy">Scouting and Strategy</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="scouting-and-strategy"><a class="header" href="#scouting-and-strategy">Scouting and Strategy</a></h1>
 <p>This chapter will talk about designing and utilizing a scouting app effectively. It will also talk about competition roles and advancement to worlds. </p>
-<h1><a class="header" href="#contribute" id="contribute">Contribute</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="contribute"><a class="header" href="#contribute">Contribute</a></h1>
 <p>We welcome any relevant contributions to these docs! If you want to contribute, the GitHub repository is available <a href="https://github.com/icrobotics-team167/docs">here</a>. The contribution guidelines are available <a href="https://github.com/icrobotics-team167/docs/blob/devel/CONTRIBUTING.md">here</a>. This includes an explanation of the project structure and the build process.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
 
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -924,18 +1042,14 @@ Additionally, the Kelvin temperature \( K(c) \) given a Celsius temperature \( c
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
 
-                
             </nav>
 
         </div>
 
-        
 
-        
         <!-- Google Analytics Tag -->
-        <script type="text/javascript">
+        <script>
             var localAddrs = ["localhost", "127.0.0.1", ""];
 
             // make sure we don't activate google analytics if the developer is
@@ -950,44 +1064,32 @@ Additionally, the Kelvin temperature \( K(c) \) given a Celsius temperature \( c
                 ga('send', 'pageview');
             }
         </script>
-        
 
-        
 
-        
-        <script type="text/javascript">
+        <script>
             window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-        
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
 
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
-        
-        <script type="text/javascript" src="theme/main.js"></script>
-        
+        <script src="theme/main.js"></script>
 
-        
-        
-        <script type="text/javascript">
+        <script>
         window.addEventListener('load', function() {
             MathJax.Hub.Register.StartupHook('End', function() {
                 window.setTimeout(window.print, 100);
             });
         });
         </script>
-        
-        
 
+    </div>
     </body>
 </html>
